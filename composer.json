@@ -1,0 +1,13 @@
+{
+    "name": "cm/cm-2025",
+    "description": "CM 2025 - Pattern Studio Project",
+    "type": "project",
+    "require": {
+        "tecnickcom/tcpdf": "^6.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "CM\\": "src/"
+        }
+    }
+}

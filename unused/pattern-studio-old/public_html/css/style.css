@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,300,700');
+
+html{
+    font-family: 'Roboto', sans-serif;
+}
+label {
+	font-weight: normal;
+}
+.red{
+	color: #FF0000;
+}
+.form-group{
+	margin-bottom: 5px;
+}
+
+h2 {
+	font-size: 24px;
+    font-family: 'Roboto', sans-serif;
+    color: #7952b3;
+    font-weight: 300;
+}
+
+P, DIV {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+}
+
+h1, .h1{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300!important;
+    color: #7952b3;
+}
+
+.btnpadding {
+	padding-right: 5px;
+	padding-left: 5px;
+}
+
+.shadows {
+    border: #ddd solid 1px;
+    margin: 20px;
+    background-color:#ffffff;
+    padding: 0px;
+}
+
+body {
+    background-color: rgb(248, 248, 248)
+    font-family: 'Roboto', sans-serif;
+}
+
+#custom-bootstrap-menu.navbar-default .navbar-brand {
+    color: rgba(255, 255, 255, 1);
+    font-family: 'Roboto', sans-serif;
+}
+#custom-bootstrap-menu.navbar-default {
+    font-size: 14px;
+    background-color: rgba(75, 0, 130, 1);
+    border-width: 1px;
+    border-radius: 4px;
+    font-family: 'Roboto', sans-serif;
+}
+#custom-bootstrap-menu.navbar-default .navbar-nav>li>a {
+    color: rgba(255, 255, 255, 1);
+    background-color: rgba(75, 0, 130, 1);
+    font-family: 'Roboto', sans-serif;
+}
+#custom-bootstrap-menu.navbar-default .navbar-nav>li>a:hover,
+#custom-bootstrap-menu.navbar-default .navbar-nav>li>a:focus {
+    color: rgba(0, 0, 0, 1);
+    background-color: rgba(255, 255, 255, 1);
+    font-family: 'Roboto', sans-serif;
+}
+#custom-bootstrap-menu.navbar-default .navbar-nav>.active>a,
+#custom-bootstrap-menu.navbar-default .navbar-nav>.active>a:hover,
+#custom-bootstrap-menu.navbar-default .navbar-nav>.active>a:focus {
+    color: rgba(0, 0, 0, 1);
+    background-color: rgba(255, 255, 255, 1);
+    font-family: 'Roboto', sans-serif;
+}
+#custom-bootstrap-menu.navbar-default .navbar-toggle {
+    border-color: #ffffff;
+    font-family: 'Roboto', sans-serif;
+}
+#custom-bootstrap-menu.navbar-default .navbar-toggle:hover,
+#custom-bootstrap-menu.navbar-default .navbar-toggle:focus {
+    background-color: #ffffff;
+}
+#custom-bootstrap-menu.navbar-default .navbar-toggle .icon-bar {
+    background-color: #ffffff;
+}
+#custom-bootstrap-menu.navbar-default .navbar-toggle:hover .icon-bar,
+#custom-bootstrap-menu.navbar-default .navbar-toggle:focus .icon-bar {
+    background-color: #4b0082;
+    font-family: 'Roboto', sans-serif;
+}
+
+.tabborders{
+    border-top: 1px solid white;
+    border-left: 1px solid #c6c6c6;
+    border-right: 1px solid #f1f1f1;
+    border-bottom: 1px solid #f1f1f1;
+}
+
+.step {
+    font-weight: bold;
+    font-size: 18px;
+}
+placeholder:hover {
+    display: none;
+}

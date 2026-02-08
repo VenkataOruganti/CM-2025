@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pattern API Test</title>
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .controls {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .controls label {
+            display: inline-block;
+            margin-right: 10px;
+            font-weight: 500;
+        }
+        .controls input {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+            width: 100px;
+        }
+        .controls button {
+            padding: 10px 20px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-left: 10px;
+        }
+        .controls button:hover {
+            background: #0056b3;
+        }
+        .stats {
+            background: #e8f5e9;
+            padding: 15px;
+            border-radius: 4px;
+            margin-top: 15px;
+            display: none;
+        }
+        .stats.show { display: block; }
+        .stats strong { color: #2e7d32; }
+        .content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .panel {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        .panel-header {
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-bottom: 1px solid #eee;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .panel-body {
+            padding: 20px;
+            max-height: 600px;
+            overflow: auto;
+        }
+        pre {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 4px;
+            overflow-x: auto;
+            font-size: 12px;
+            line-height: 1.4;
+            margin: 0;
+        }
+        .svg-container {
+            border: 1px solid #eee;
+            padding: 10px;
+            background: white;
+        }
+        .svg-container svg {
+            max-width: 100%;
+            height: auto;
+        }
+        .pattern-tabs {
+            display: flex;
+            gap: 5px;
+        }
+        .pattern-tabs button {
+            padding: 5px 15px;
+            background: #eee;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .pattern-tabs button.active {
+            background: #007bff;
+            color: white;
+        }
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        .info-item {
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 4px;
+        }
+        .info-item label {
+            font-size: 11px;
+            color: #666;
+            display: block;
+        }
+        .info-item value {
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+        }
+        .node-list {
+            font-size: 11px;
+            columns: 3;
+            column-gap: 20px;
+        }
+        .node-list div {
+            break-inside: avoid;
+            padding: 2px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Pattern Nodes API Test</h1>
+
+        <div class="controls">
+            <label>Measurement ID:</label>
+            <input type="number" id="measurementId" value="97">
+
+            <label style="margin-left: 20px;">Patterns:</label>
+            <label><input type="checkbox" id="patternFront" checked> Front</label>
+            <label><input type="checkbox" id="patternBack" checked> Back</label>
+            <label><input type="checkbox" id="patternSleeve" checked> Sleeve</label>
+
+            <button onclick="fetchPatternData()">Fetch Pattern Data</button>
+            <button onclick="renderSVG()" style="background: #28a745;">Render SVG</button>
+
+            <div class="stats" id="stats">
+                <strong>API Response:</strong>
+                <span id="dataSize">-</span> |
+                <span id="responseTime">-</span> |
+                <span id="nodeCount">-</span>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="panel">
+                <div class="panel-header">
+                    API Response (JSON)
+                    <button onclick="copyJson()" style="padding: 5px 10px; font-size: 12px;">Copy</button>
+                </div>
+                <div class="panel-body">
+                    <pre id="jsonOutput">Click "Fetch Pattern Data" to load...</pre>
+                </div>
+            </div>
+
+            <div class="panel">
+                <div class="panel-header">
+                    Rendered SVG
+                    <div class="pattern-tabs" id="patternTabs"></div>
+                </div>
+                <div class="panel-body">
+                    <div id="patternInfo"></div>
+                    <div class="svg-container" id="svgOutput">
+                        <p style="color: #999; text-align: center;">Click "Render SVG" after fetching data...</p>
+                    </div>
+                    <div id="nodeList"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="mobile-svg-renderer.js"></script>
+    <script>
+        let patternData = null;
+        let currentPattern = 'front';
+
+        async function fetchPatternData() {
+            const measurementId = document.getElementById('measurementId').value;
+            const patterns = [];
+
+            if (document.getElementById('patternFront').checked) patterns.push('front');
+            if (document.getElementById('patternBack').checked) patterns.push('back');
+            if (document.getElementById('patternSleeve').checked) patterns.push('sleeve');
+
+            const startTime = performance.now();
+
+            try {
+                // Use relative URL for local testing
+                const url = `../pattern/nodes.php?measurement_id=${measurementId}&patterns=${patterns.join(',')}`;
+
+                const response = await fetch(url);
+                const responseText = await response.text();
+                const endTime = performance.now();
+
+                // Calculate size
+                const sizeKB = (new Blob([responseText]).size / 1024).toFixed(2);
+                const responseTime = (endTime - startTime).toFixed(0);
+
+                // Parse JSON
+                const result = JSON.parse(responseText);
+                patternData = result.data;
+
+                // Update stats
+                document.getElementById('stats').classList.add('show');
+                document.getElementById('dataSize').textContent = `${sizeKB} KB`;
+                document.getElementById('responseTime').textContent = `${responseTime}ms`;
+
+                // Count nodes
+                let totalNodes = 0;
+                if (patternData.patterns) {
+                    for (const p of Object.values(patternData.patterns)) {
+                        if (p.nodes) totalNodes += Object.keys(p.nodes).length;
+                    }
+                }
+                document.getElementById('nodeCount').textContent = `${totalNodes} nodes`;
+
+                // Display JSON
+                document.getElementById('jsonOutput').textContent = JSON.stringify(result, null, 2);
+
+                // Update tabs
+                updatePatternTabs();
+
+            } catch (error) {
+                document.getElementById('jsonOutput').textContent = `Error: ${error.message}`;
+                console.error(error);
+            }
+        }
+
+        function updatePatternTabs() {
+            const tabsContainer = document.getElementById('patternTabs');
+            tabsContainer.innerHTML = '';
+
+            if (!patternData || !patternData.patterns) return;
+
+            for (const key of Object.keys(patternData.patterns)) {
+                const btn = document.createElement('button');
+                btn.textContent = key.toUpperCase();
+                btn.className = key === currentPattern ? 'active' : '';
+                btn.onclick = () => {
+                    currentPattern = key;
+                    updatePatternTabs();
+                    renderSVG();
+                };
+                tabsContainer.appendChild(btn);
+            }
+        }
+
+        function renderSVG() {
+            if (!patternData || !patternData.patterns) {
+                alert('Please fetch pattern data first');
+                return;
+            }
+
+            const pattern = patternData.patterns[currentPattern];
+            if (!pattern) {
+                document.getElementById('svgOutput').innerHTML = '<p style="color: red;">Pattern not found</p>';
+                return;
+            }
+
+            // Use the PatternRenderer class
+            const svg = PatternRenderer.renderPattern(pattern, {
+                showNodes: true,
+                showLabels: true
+            });
+
+            document.getElementById('svgOutput').innerHTML = svg;
+
+            // Show pattern info
+            let infoHtml = '<div class="info-grid">';
+            infoHtml += `<div class="info-item"><label>Name</label><value>${pattern.name}</value></div>`;
+            infoHtml += `<div class="info-item"><label>ViewBox</label><value>${pattern.viewBox}</value></div>`;
+            infoHtml += `<div class="info-item"><label>Nodes</label><value>${Object.keys(pattern.nodes || {}).length}</value></div>`;
+            infoHtml += `<div class="info-item"><label>Paths</label><value>${Object.keys(pattern.paths || {}).length}</value></div>`;
+            infoHtml += `<div class="info-item"><label>Labels</label><value>${(pattern.labels || []).length}</value></div>`;
+            infoHtml += '</div>';
+            document.getElementById('patternInfo').innerHTML = infoHtml;
+
+            // Show node list
+            if (pattern.nodes) {
+                let nodeHtml = '<h4 style="margin: 15px 0 10px;">Node Coordinates:</h4><div class="node-list">';
+                for (const [key, node] of Object.entries(pattern.nodes)) {
+                    nodeHtml += `<div><strong>${key}:</strong> (${node.x}, ${node.y})</div>`;
+                }
+                nodeHtml += '</div>';
+                document.getElementById('nodeList').innerHTML = nodeHtml;
+            }
+        }
+
+        function copyJson() {
+            const json = document.getElementById('jsonOutput').textContent;
+            navigator.clipboard.writeText(json).then(() => {
+                alert('JSON copied to clipboard!');
+            });
+        }
+    </script>
+</body>
+</html>

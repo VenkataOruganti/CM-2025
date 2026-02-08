@@ -1,0 +1,45 @@
+# Robots.txt for CuttingMaster.in
+# Last updated: 2026-01-26
+
+User-agent: *
+Allow: /
+
+# Allow all main pages
+Allow: /index.php
+Allow: /pages/
+Allow: /images/
+Allow: /css/
+Allow: /js/
+
+# Disallow admin and private areas
+Disallow: /admin/
+Disallow: /config/
+Disallow: /database/
+Disallow: /includes/
+Disallow: /vendor/
+Disallow: /unused/
+Disallow: /patterns/
+
+# Disallow internal/utility pages
+Disallow: /pages/dashboard*.php
+Disallow: /pages/edit-profile.php
+Disallow: /pages/saved-measurements.php
+Disallow: /pages/logout.php
+Disallow: /pages/mimic-user.php
+Disallow: /pages/exit-mimic.php
+Disallow: /pages/ajax-*.php
+Disallow: /pages/debug-*.php
+Disallow: /pages/fix-*.php
+Disallow: /pages/user-details.php
+Disallow: /pages/pattern-download.php
+Disallow: /pages/pattern-payment.php
+Disallow: /pages/pattern-preview.php
+
+# Disallow admin portfolio management pages
+Disallow: /pages/admin-*.php
+
+# Sitemap location
+Sitemap: https://cuttingmaster.in/sitemap.xml
+
+# Crawl delay (optional - be kind to the server)
+Crawl-delay: 1

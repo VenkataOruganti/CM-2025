@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+    <!-- Homepage -->
+    <url>
+        <loc>https://cuttingmaster.in/</loc>
+        <lastmod>2026-01-26</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+        <xhtml:link rel="alternate" hreflang="en" href="https://cuttingmaster.in/?lang=en"/>
+        <xhtml:link rel="alternate" hreflang="hi" href="https://cuttingmaster.in/?lang=hi"/>
+        <xhtml:link rel="alternate" hreflang="te" href="https://cuttingmaster.in/?lang=te"/>
+    </url>
+
+    <!-- About Page -->
+    <url>
+        <loc>https://cuttingmaster.in/pages/about.php</loc>
+        <lastmod>2026-01-20</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+        <xhtml:link rel="alternate" hreflang="en" href="https://cuttingmaster.in/pages/about.php?lang=en"/>
+        <xhtml:link rel="alternate" hreflang="hi" href="https://cuttingmaster.in/pages/about.php?lang=hi"/>
+        <xhtml:link rel="alternate" hreflang="te" href="https://cuttingmaster.in/pages/about.php?lang=te"/>
+    </url>
+
+    <!-- Contact Page -->
+    <url>
+        <loc>https://cuttingmaster.in/pages/contact-us.php</loc>
+        <lastmod>2026-01-20</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <xhtml:link rel="alternate" hreflang="en" href="https://cuttingmaster.in/pages/contact-us.php?lang=en"/>
+        <xhtml:link rel="alternate" hreflang="hi" href="https://cuttingmaster.in/pages/contact-us.php?lang=hi"/>
+        <xhtml:link rel="alternate" hreflang="te" href="https://cuttingmaster.in/pages/contact-us.php?lang=te"/>
+    </url>
+
+    <!-- Pattern Studio -->
+    <url>
+        <loc>https://cuttingmaster.in/pages/pattern-studio.php</loc>
+        <lastmod>2026-01-26</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+        <xhtml:link rel="alternate" hreflang="en" href="https://cuttingmaster.in/pages/pattern-studio.php?lang=en"/>
+        <xhtml:link rel="alternate" hreflang="hi" href="https://cuttingmaster.in/pages/pattern-studio.php?lang=hi"/>
+        <xhtml:link rel="alternate" hreflang="te" href="https://cuttingmaster.in/pages/pattern-studio.php?lang=te"/>
+    </url>
+
+    <!-- Tailoring Page -->
+    <url>
+        <loc>https://cuttingmaster.in/pages/tailoring.php</loc>
+        <lastmod>2026-01-20</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <xhtml:link rel="alternate" hreflang="en" href="https://cuttingmaster.in/pages/tailoring.php?lang=en"/>
+        <xhtml:link rel="alternate" hreflang="hi" href="https://cuttingmaster.in/pages/tailoring.php?lang=hi"/>
+        <xhtml:link rel="alternate" hreflang="te" href="https://cuttingmaster.in/pages/tailoring.php?lang=te"/>
+    </url>
+
+    <!-- Wholesale Catalog -->
+    <url>
+        <loc>https://cuttingmaster.in/pages/wholesale-catalog.php</loc>
+        <lastmod>2026-01-20</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+        <xhtml:link rel="alternate" hreflang="en" href="https://cuttingmaster.in/pages/wholesale-catalog.php?lang=en"/>
+        <xhtml:link rel="alternate" hreflang="hi" href="https://cuttingmaster.in/pages/wholesale-catalog.php?lang=hi"/>
+        <xhtml:link rel="alternate" hreflang="te" href="https://cuttingmaster.in/pages/wholesale-catalog.php?lang=te"/>
+    </url>
+
+    <!-- Public Measurements -->
+    <url>
+        <loc>https://cuttingmaster.in/pages/public-measurements.php</loc>
+        <lastmod>2026-01-20</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+        <xhtml:link rel="alternate" hreflang="en" href="https://cuttingmaster.in/pages/public-measurements.php?lang=en"/>
+        <xhtml:link rel="alternate" hreflang="hi" href="https://cuttingmaster.in/pages/public-measurements.php?lang=hi"/>
+        <xhtml:link rel="alternate" hreflang="te" href="https://cuttingmaster.in/pages/public-measurements.php?lang=te"/>
+    </url>
+
+    <!-- Registration Page -->
+    <url>
+        <loc>https://cuttingmaster.in/pages/register.php</loc>
+        <lastmod>2026-01-20</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+        <xhtml:link rel="alternate" hreflang="en" href="https://cuttingmaster.in/pages/register.php?lang=en"/>
+        <xhtml:link rel="alternate" hreflang="hi" href="https://cuttingmaster.in/pages/register.php?lang=hi"/>
+        <xhtml:link rel="alternate" hreflang="te" href="https://cuttingmaster.in/pages/register.php?lang=te"/>
+    </url>
+
+    <!-- Login Page -->
+    <url>
+        <loc>https://cuttingmaster.in/pages/login.php</loc>
+        <lastmod>2026-01-20</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+        <xhtml:link rel="alternate" hreflang="en" href="https://cuttingmaster.in/pages/login.php?lang=en"/>
+        <xhtml:link rel="alternate" hreflang="hi" href="https://cuttingmaster.in/pages/login.php?lang=hi"/>
+        <xhtml:link rel="alternate" hreflang="te" href="https://cuttingmaster.in/pages/login.php?lang=te"/>
+    </url>
+
+    <!-- Blog Index -->
+    <url>
+        <loc>https://cuttingmaster.in/pages/blog.php</loc>
+        <lastmod>2026-01-26</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+        <xhtml:link rel="alternate" hreflang="en" href="https://cuttingmaster.in/pages/blog.php?lang=en"/>
+        <xhtml:link rel="alternate" hreflang="hi" href="https://cuttingmaster.in/pages/blog.php?lang=hi"/>
+        <xhtml:link rel="alternate" hreflang="te" href="https://cuttingmaster.in/pages/blog.php?lang=te"/>
+    </url>
+
+    <!-- Blog Posts -->
+
+    <!-- Blog: Choosing Right Fabric for Blouse -->
+    <url>
+        <loc>https://cuttingmaster.in/pages/blog-post.php?slug=choosing-right-fabric-for-blouse</loc>
+        <lastmod>2026-01-14</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <xhtml:link rel="alternate" hreflang="en" href="https://cuttingmaster.in/pages/blog-post.php?slug=choosing-right-fabric-for-blouse&amp;lang=en"/>
+        <xhtml:link rel="alternate" hreflang="hi" href="https://cuttingmaster.in/pages/blog-post.php?slug=choosing-right-fabric-for-blouse&amp;lang=hi"/>
+        <xhtml:link rel="alternate" hreflang="te" href="https://cuttingmaster.in/pages/blog-post.php?slug=choosing-right-fabric-for-blouse&amp;lang=te"/>
+    </url>
+
+    <!-- Blog: Common Blouse Fitting Problems -->
+    <url>
+        <loc>https://cuttingmaster.in/pages/blog-post.php?slug=common-blouse-fitting-problems</loc>
+        <lastmod>2026-01-14</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <xhtml:link rel="alternate" hreflang="en" href="https://cuttingmaster.in/pages/blog-post.php?slug=common-blouse-fitting-problems&amp;lang=en"/>
+        <xhtml:link rel="alternate" hreflang="hi" href="https://cuttingmaster.in/pages/blog-post.php?slug=common-blouse-fitting-problems&amp;lang=hi"/>
+        <xhtml:link rel="alternate" hreflang="te" href="https://cuttingmaster.in/pages/blog-post.php?slug=common-blouse-fitting-problems&amp;lang=te"/>
+    </url>
+
+    <!-- Blog: How to Take Body Measurements -->
+    <url>
+        <loc>https://cuttingmaster.in/pages/blog-post.php?slug=how-to-take-body-measurements</loc>
+        <lastmod>2026-01-14</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <xhtml:link rel="alternate" hreflang="en" href="https://cuttingmaster.in/pages/blog-post.php?slug=how-to-take-body-measurements&amp;lang=en"/>
+        <xhtml:link rel="alternate" hreflang="hi" href="https://cuttingmaster.in/pages/blog-post.php?slug=how-to-take-body-measurements&amp;lang=hi"/>
+        <xhtml:link rel="alternate" hreflang="te" href="https://cuttingmaster.in/pages/blog-post.php?slug=how-to-take-body-measurements&amp;lang=te"/>
+    </url>
+
+    <!-- Blog: Sleeve Styles for Saree Blouse -->
+    <url>
+        <loc>https://cuttingmaster.in/pages/blog-post.php?slug=sleeve-styles-saree-blouse</loc>
+        <lastmod>2026-01-14</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <xhtml:link rel="alternate" hreflang="en" href="https://cuttingmaster.in/pages/blog-post.php?slug=sleeve-styles-saree-blouse&amp;lang=en"/>
+        <xhtml:link rel="alternate" hreflang="hi" href="https://cuttingmaster.in/pages/blog-post.php?slug=sleeve-styles-saree-blouse&amp;lang=hi"/>
+        <xhtml:link rel="alternate" hreflang="te" href="https://cuttingmaster.in/pages/blog-post.php?slug=sleeve-styles-saree-blouse&amp;lang=te"/>
+    </url>
+
+    <!-- Blog: Understanding Dart Placement -->
+    <url>
+        <loc>https://cuttingmaster.in/pages/blog-post.php?slug=understanding-dart-placement</loc>
+        <lastmod>2026-01-14</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <xhtml:link rel="alternate" hreflang="en" href="https://cuttingmaster.in/pages/blog-post.php?slug=understanding-dart-placement&amp;lang=en"/>
+        <xhtml:link rel="alternate" hreflang="hi" href="https://cuttingmaster.in/pages/blog-post.php?slug=understanding-dart-placement&amp;lang=hi"/>
+        <xhtml:link rel="alternate" hreflang="te" href="https://cuttingmaster.in/pages/blog-post.php?slug=understanding-dart-placement&amp;lang=te"/>
+    </url>
+
+</urlset>

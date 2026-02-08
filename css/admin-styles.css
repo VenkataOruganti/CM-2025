@@ -1,0 +1,811 @@
+/* ==========================================================================
+   CuttingMaster Admin Styles
+   Centralized CSS for all admin pages
+   ========================================================================== */
+
+/* ==========================================================================
+   Base Reset & Typography
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Libre Franklin', sans-serif;
+    background: #F7FAFC;
+    min-height: 100vh;
+}
+
+/* ==========================================================================
+   Admin Container & Header
+   ========================================================================== */
+.admin-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem;
+    padding-top: 80px;
+}
+
+.admin-header {
+    margin-bottom: 2rem;
+    text-align: left;
+}
+
+.admin-header h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.5rem;
+    color: #2D3748;
+    margin-bottom: 0.5rem;
+}
+
+.admin-header p {
+    color: #718096;
+    font-size: 1rem;
+}
+
+/* ==========================================================================
+   Statistics Cards
+   ========================================================================== */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    background: #E6F3FF;
+    padding: 1.5rem;
+    border-radius: 12px;
+    color: #000000;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.stat-card.secondary {
+    background: #FFE6F0;
+}
+
+.stat-card.tertiary {
+    background: #E6FFFA;
+}
+
+.stat-card.quaternary {
+    background: #FFF5E6;
+}
+
+.stat-card .stat-value {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #000000;
+    line-height: 1;
+    min-width: 60px;
+}
+
+.stat-card-info {
+    flex: 1;
+}
+
+.stat-card-info h3 {
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+    color: #000000;
+}
+
+.stat-card-info p {
+    color: #2D3748;
+    font-size: 0.875rem;
+    margin: 0;
+}
+
+.stat-card-info a {
+    color: #2D3748;
+    font-size: 0.875rem;
+}
+
+/* ==========================================================================
+   Tables
+   ========================================================================== */
+.users-table-container,
+.enquiries-container,
+.data-table-container {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.table-header {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid #E2E8F0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.table-header h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    color: #2D3748;
+}
+
+.table-filter {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.table-filter label {
+    font-size: 0.75rem;
+    color: #718096;
+}
+
+.table-filter select {
+    padding: 0.35rem 0.75rem;
+    font-size: 0.75rem;
+    border: 1px solid #E2E8F0;
+    border-radius: 4px;
+    background: white;
+    color: #2D3748;
+    cursor: pointer;
+}
+
+.table-filter select:focus {
+    outline: none;
+    border-color: #3B82F6;
+}
+
+.users-table,
+.enquiries-table,
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.users-table thead,
+.enquiries-table thead,
+.data-table thead {
+    background-color: #F7FAFC;
+}
+
+.users-table th,
+.enquiries-table th,
+.data-table th {
+    padding: 0.5rem 0.4rem;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.65rem;
+    color: #4A5568;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+.users-table td,
+.enquiries-table td,
+.data-table td {
+    padding: 0.5rem 0.4rem;
+    border-top: 1px solid #E2E8F0;
+    color: #2D3748;
+    font-size: 0.75rem;
+}
+
+.users-table tbody tr,
+.enquiries-table tbody tr,
+.data-table tbody tr {
+    transition: background-color 0.15s;
+}
+
+.users-table tbody tr:hover,
+.enquiries-table tbody tr:hover,
+.data-table tbody tr:hover {
+    background-color: #F7FAFC;
+}
+
+/* ==========================================================================
+   Badges
+   ========================================================================== */
+.user-type-badge {
+    display: inline-block;
+    padding: 0.15rem 0.5rem;
+    border-radius: 9999px;
+    font-size: 0.65rem;
+    font-weight: 500;
+}
+
+.user-type-badge.individual {
+    background-color: #DBEAFE;
+    color: #1E40AF;
+}
+
+.user-type-badge.boutique {
+    background-color: #FCE7F3;
+    color: #9F1239;
+}
+
+.user-type-badge.pattern_provider {
+    background-color: #FEF3C7;
+    color: #92400E;
+}
+
+.user-type-badge.wholesaler {
+    background-color: #D1FAE5;
+    color: #065F46;
+}
+
+.status-badge {
+    display: inline-block;
+    padding: 0.15rem 0.5rem;
+    border-radius: 9999px;
+    font-size: 0.65rem;
+    font-weight: 500;
+}
+
+.status-badge.active,
+.status-badge.replied {
+    background-color: #D1FAE5;
+    color: #065F46;
+}
+
+.status-badge.inactive,
+.status-badge.read {
+    background-color: #F3F4F6;
+    color: #4B5563;
+}
+
+.status-badge.suspended,
+.status-badge.closed {
+    background-color: #FEE2E2;
+    color: #991B1B;
+}
+
+.status-badge.new {
+    background-color: #DBEAFE;
+    color: #1E40AF;
+}
+
+.posting-count {
+    color: #718096;
+    font-size: 0.65rem;
+    font-weight: 400;
+    margin-left: 0.25rem;
+}
+
+/* ==========================================================================
+   Action Buttons
+   ========================================================================== */
+.action-buttons {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.btn-edit,
+.btn-delete,
+.btn-view {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    transition: all 0.2s;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.btn-edit {
+    background-color: #4299E1;
+    color: white;
+}
+
+.btn-edit:hover {
+    background-color: #3182CE;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(66, 153, 225, 0.3);
+}
+
+.btn-delete {
+    background-color: #FEE2E2;
+    color: #991B1B;
+}
+
+.btn-delete:hover {
+    background-color: #FECACA;
+}
+
+.btn-view {
+    background-color: #E0E7FF;
+    color: #3730A3;
+}
+
+.btn-view:hover {
+    background-color: #C7D2FE;
+}
+
+/* ==========================================================================
+   Alert Messages
+   ========================================================================== */
+.alert {
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.alert.success {
+    background-color: #D1FAE5;
+    color: #065F46;
+    border: 1px solid #6EE7B7;
+}
+
+.alert.error {
+    background-color: #FEE2E2;
+    color: #991B1B;
+    border: 1px solid #FCA5A5;
+}
+
+/* ==========================================================================
+   Forms
+   ========================================================================== */
+.add-form-container {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.add-form-container h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    color: #2D3748;
+    margin-bottom: 1rem;
+}
+
+.add-form {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    align-items: end;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #4A5568;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    padding: 0.75rem;
+    border: 1px solid #E2E8F0;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    background: white;
+    transition: border-color 0.2s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #3B82F6;
+}
+
+.btn-add {
+    padding: 0.75rem 1.5rem;
+    background-color: #3B82F6;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    white-space: nowrap;
+}
+
+.btn-add:hover {
+    background-color: #2563EB;
+}
+
+/* ==========================================================================
+   Portfolio Grid
+   ========================================================================== */
+.portfolio-grid-container {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    padding: 1.5rem;
+}
+
+.portfolio-card {
+    background: #F7FAFC;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: box-shadow 0.2s;
+}
+
+.portfolio-card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.portfolio-card-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.portfolio-card-content {
+    padding: 1rem;
+}
+
+.portfolio-card-title {
+    font-weight: 600;
+    color: #2D3748;
+    margin-bottom: 0.5rem;
+}
+
+.portfolio-card-desc,
+.portfolio-card-category {
+    font-size: 0.75rem;
+    color: #718096;
+    margin-bottom: 0.75rem;
+}
+
+.portfolio-card-actions {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.btn-status {
+    padding: 0.5rem 0.75rem;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-status.active {
+    background-color: #D1FAE5;
+    color: #065F46;
+}
+
+.btn-status.inactive {
+    background-color: #FEE2E2;
+    color: #991B1B;
+}
+
+/* ==========================================================================
+   Modals
+   ========================================================================== */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    animation: fadeIn 0.2s;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    width: 90%;
+    animation: slideIn 0.3s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.modal-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.modal-header h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    color: #2D3748;
+    margin: 0;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #718096;
+    margin-left: auto;
+}
+
+.modal-close:hover {
+    color: #2D3748;
+}
+
+.modal-body {
+    margin-bottom: 1.5rem;
+    color: #4A5568;
+    line-height: 1.6;
+}
+
+.modal-footer {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+}
+
+.btn-modal,
+.btn-modal-cancel,
+.btn-modal-confirm {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-modal-cancel {
+    background-color: #E2E8F0;
+    color: #2D3748;
+}
+
+.btn-modal-cancel:hover {
+    background-color: #CBD5E0;
+}
+
+.btn-modal-confirm {
+    background-color: #EF4444;
+    color: white;
+}
+
+.btn-modal-confirm:hover {
+    background-color: #DC2626;
+}
+
+.btn-modal-save,
+.btn-status-change {
+    background-color: #3B82F6;
+    color: white;
+}
+
+.btn-modal-save:hover,
+.btn-status-change:hover {
+    background-color: #2563EB;
+}
+
+/* ==========================================================================
+   Edit Modal Specific
+   ========================================================================== */
+.edit-modal-content {
+    max-width: 600px;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.edit-form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.edit-form-grid .form-group.full-width {
+    grid-column: 1 / -1;
+}
+
+.current-image {
+    margin-top: 0.5rem;
+}
+
+.current-image img {
+    max-width: 150px;
+    height: auto;
+    border-radius: 8px;
+    border: 1px solid #E2E8F0;
+}
+
+/* ==========================================================================
+   Enquiry Details
+   ========================================================================== */
+.enquiry-detail {
+    margin-bottom: 1rem;
+}
+
+.enquiry-detail label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #4A5568;
+    text-transform: uppercase;
+    margin-bottom: 0.25rem;
+}
+
+.enquiry-detail p {
+    color: #2D3748;
+    font-size: 0.875rem;
+}
+
+.enquiry-detail.message p {
+    background: #F7FAFC;
+    padding: 1rem;
+    border-radius: 8px;
+    white-space: pre-wrap;
+}
+
+.status-select {
+    padding: 0.25rem 0.5rem;
+    border: 1px solid #E2E8F0;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    background: white;
+}
+
+/* ==========================================================================
+   Mimic User Link
+   ========================================================================== */
+.mimic-user-link {
+    color: #3B82F6;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.mimic-user-link:hover {
+    color: #1D4ED8;
+    text-decoration: underline;
+}
+
+.mimic-user-link::after {
+    content: '';
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%233B82F6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4'/%3E%3Cpolyline points='10 17 15 12 10 7'/%3E%3Cline x1='15' y1='12' x2='3' y2='12'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: contain;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.mimic-user-link:hover::after {
+    opacity: 1;
+}
+
+/* ==========================================================================
+   Empty State
+   ========================================================================== */
+.no-data {
+    padding: 3rem;
+    text-align: center;
+    color: #718096;
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+.admin-footer {
+    margin-top: 4rem;
+    padding: 2rem 0;
+    border-top: 1px solid #E2E8F0;
+    text-align: center;
+    color: #718096;
+    font-size: 0.875rem;
+}
+
+/* ==========================================================================
+   Measurements Table Specific
+   ========================================================================== */
+.measurements-table-container {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin-bottom: 2rem;
+}
+
+.measurements-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.measurements-table th {
+    background: #F7FAFC;
+    padding: 0.75rem 1rem;
+    text-align: left;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #4A5568;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid #E2E8F0;
+}
+
+.measurements-table td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #E2E8F0;
+    font-size: 0.875rem;
+    color: #2D3748;
+}
+
+.measurements-table tr:hover {
+    background-color: #F7FAFC;
+}
+
+/* ==========================================================================
+   Utility Classes
+   ========================================================================== */
+.text-center {
+    text-align: center;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.mt-1 { margin-top: 0.5rem; }
+.mt-2 { margin-top: 1rem; }
+.mt-3 { margin-top: 1.5rem; }
+.mb-1 { margin-bottom: 0.5rem; }
+.mb-2 { margin-bottom: 1rem; }
+.mb-3 { margin-bottom: 1.5rem; }

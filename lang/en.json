@@ -1,0 +1,819 @@
+{
+  "_meta": {
+    "language": "English",
+    "locale": "en-US",
+    "direction": "ltr",
+    "version": "1.0.0",
+    "lastUpdated": "2026-01-23"
+  },
+
+  "nav": {
+    "pattern_studio": "Pattern Studio",
+    "wholesale": "Wholesale Marketplace",
+    "contact": "Contact Us",
+    "account": "Your Account",
+    "login": "Login",
+    "logout": "Logout",
+    "register": "Register",
+    "home": "Home",
+    "blog": "Blog"
+  },
+
+  "patterns": {
+    "sari_blouse": "Sari Blouse",
+    "front": "Front",
+    "back": "Back",
+    "sleeve": "Sleeve",
+    "patti": "Patti",
+    "neckline": "Neckline",
+    "armhole": "Armhole",
+    "princess_line": "Princess Line",
+    "boat_neck": "Boat Neck",
+    "deep_neck": "Deep Neck",
+    "pattern": "Pattern",
+    "patterns": "Patterns"
+  },
+
+  "measurements": {
+    "title": "Measurements",
+    "bust": "Bust",
+    "chest": "Chest",
+    "waist": "Waist",
+    "shoulder": "Shoulder",
+    "arm_length": "Arm Length",
+    "sleeve_length": "Sleeve Length",
+    "back_length": "Back Length",
+    "front_length": "Front Length",
+    "armhole_depth": "Armhole Depth",
+    "neck_depth": "Neck Depth",
+    "back_neck_depth": "Back Neck Depth",
+    "front_neck_depth": "Front Neck Depth",
+    "apex": "Apex",
+    "sleeve_round": "Sleeve Round",
+    "sleeve_opening": "Sleeve Opening",
+    "inches": "inches",
+    "cm": "cm"
+  },
+
+  "buttons": {
+    "download": "Download",
+    "buy": "Buy",
+    "save": "Save",
+    "cancel": "Cancel",
+    "continue": "Continue",
+    "back": "Back",
+    "submit": "Submit",
+    "generate": "Generate",
+    "preview": "Preview",
+    "print": "Print",
+    "edit": "Edit",
+    "delete": "Delete",
+    "add": "Add",
+    "update": "Update",
+    "close": "Close",
+    "confirm": "Confirm",
+    "search": "Search",
+    "filter": "Filter",
+    "reset": "Reset",
+    "agree": "I Agree",
+    "got_it": "Got it!"
+  },
+
+  "download": {
+    "pdf": "Download PDF",
+    "svg": "Download SVG",
+    "projector_pdf": "Projector PDF",
+    "projector_png": "Projector PNG",
+    "buy_pdf": "Buy PDF",
+    "buy_svg": "Buy SVG",
+    "buy_projector_pdf": "Buy Projector PDF",
+    "buy_projector_png": "Buy Projector PNG",
+    "select_paper": "Select Paper Size",
+    "paper_size": "Paper Size",
+    "download_started": "Download Started!",
+    "check_downloads": "Check your Downloads folder"
+  },
+
+  "messages": {
+    "welcome": "Welcome, {name}!",
+    "pattern_ready": "Your Pattern is Ready!",
+    "download_started": "Download Started",
+    "please_wait": "Please wait...",
+    "loading": "Loading...",
+    "error_occurred": "An error occurred",
+    "try_again": "Please try again",
+    "no_measurements": "No measurements found",
+    "success": "Success!",
+    "saved": "Saved successfully",
+    "deleted": "Deleted successfully",
+    "updated": "Updated successfully",
+    "confirm_delete": "Are you sure you want to delete this?"
+  },
+
+  "customer": {
+    "name": "Customer Name",
+    "phone": "Phone Number",
+    "mobile": "Mobile Number",
+    "email": "Email",
+    "add_new": "Add New Customer",
+    "select": "Select Customer",
+    "self": "Self Measurements",
+    "customers": "Customers",
+    "my_customers": "My Customers",
+    "customer_id": "Customer ID",
+    "no_customers": "No customers found"
+  },
+
+  "dashboard": {
+    "title": "Dashboard",
+    "my_patterns": "My Patterns",
+    "my_customers": "My Customers",
+    "recent_activity": "Recent Activity",
+    "total_patterns": "Total Patterns",
+    "total_customers": "Total Customers",
+    "quick_actions": "Quick Actions",
+    "view_all": "View All",
+
+    "welcome": "Welcome, {name}!",
+    "individual_title": "Individual",
+    "boutique_title": "Boutique",
+
+    "nav": {
+      "pattern_studio": "PATTERN STUDIO",
+      "wholesale": "WHOLESALE MARKETPLACE",
+      "contact": "CONTACT US",
+      "your_account": "YOUR ACCOUNT",
+      "logout": "LOGOUT",
+      "business_name": "Business Name:",
+      "owner_name": "Owner Name:",
+      "location": "Location:",
+      "mobile": "Mobile:",
+      "name": "Name:",
+      "email": "Email:",
+      "account_type": "Account Type:",
+      "status": "Status:",
+      "edit_profile": "Edit Profile"
+    },
+
+    "upgrade": {
+      "title": "Upgrade to Boutique",
+      "description": "Unlock powerful features for your tailoring business!",
+      "feature1": "Manage unlimited customers",
+      "feature2": "Access exclusive free designs",
+      "feature3": "Save measurements for each client",
+      "feature4": "Track customer orders",
+      "btn": "Upgrade Now - It's Free!",
+      "modal_title": "Upgrade to Boutique",
+      "modal_description": "You're about to upgrade your account to a <strong>Boutique/Tailor-Shop</strong> account. This upgrade is <strong style=\"color: #38A169;\">completely free</strong>!",
+      "what_you_get": "What You'll Get:",
+      "benefit1": "Customer Management",
+      "benefit1_desc": "Add and manage unlimited customers",
+      "benefit2": "Measurement Storage",
+      "benefit2_desc": "Save measurements for each client",
+      "benefit3": "Exclusive Designs",
+      "benefit3_desc": "Access free boutique-only patterns",
+      "benefit4": "Business Tools",
+      "benefit4_desc": "Track orders and customer history",
+      "info_message": "Your existing measurements will be preserved. You can start adding customers right away!",
+      "maybe_later": "Maybe Later",
+      "confirm_btn": "Upgrade My Account",
+      "success": "Congratulations! Your account has been upgraded to Boutique. You can now manage customers and access exclusive features!"
+    },
+
+    "measurements": {
+      "your_measurements": "Your Measurements",
+      "no_measurements": "No measurements found.",
+      "add_measurements": "Add Measurements",
+      "category": "Category:",
+      "last_updated": "Last Updated:",
+      "edit_title": "Edit Measurements",
+
+      "blouse_back_length": "Blouse Back Length (1)",
+      "full_shoulder": "Full Shoulder (2)",
+      "shoulder_strap": "Shoulder Strap (3)",
+      "back_neck_depth": "Back Neck Depth (4)",
+      "front_neck_depth": "Front Neck Depth (5)",
+      "shoulder_to_apex": "Shoulder to Apex (6)",
+      "front_length": "Front Length (7)",
+      "upper_chest": "Upper Chest (8)",
+      "bust_round": "Bust Round (9)",
+      "waist_round": "Waist Round (10)",
+      "sleeve_length": "Sleeve Length (11)",
+      "arm_round": "Arm Round (12)",
+      "sleeve_end_round": "Sleeve End Round (13)",
+      "armhole": "Armhole (14)",
+
+      "chest": "Chest",
+      "waist": "Waist",
+      "hips": "Hips",
+      "height": "Height",
+
+      "kurti_length": "Kurti Length",
+      "hip_round": "Hip Round",
+      "inseam": "Inseam",
+      "outseam": "Outseam",
+      "thigh_round": "Thigh Round",
+      "knee_round": "Knee Round",
+      "ankle_round": "Ankle Round"
+    },
+
+    "customer": {
+      "select_customer": "Select Customer:",
+      "new_customer": "New Customer",
+      "search_placeholder": "Search by Name / Mobile No.",
+      "your_customers": "Your Customers",
+      "no_customers": "No customers yet.",
+      "no_customers_msg": "Visit Pattern Studio to add measurements for your first customer.",
+      "no_measurements_recorded": "No measurements recorded for this customer yet.",
+      "no_customers_found": "No customers found",
+      "type_to_search": "Type to search more customers..."
+    },
+
+    "patterns": {
+      "build_your_pattern": "Build Your Pattern",
+      "predesigned_patterns": "Pre-designed Patterns",
+      "front_blouse_designs": "Front Blouse Designs",
+      "back_blouse_designs": "Back Blouse Designs",
+      "free": "Free",
+      "no_custom_patterns": "No Custom Patterns Yet",
+      "no_custom_patterns_desc": "Custom pattern designs will appear here once added.",
+      "no_predesigned_patterns": "No Pre-designed Patterns Yet",
+      "no_predesigned_patterns_desc": "Pre-designed patterns will appear here once added by pattern providers.",
+      "no_front_designs": "No Front Blouse Designs Yet",
+      "no_front_designs_desc": "Front blouse design options will appear here once added.",
+      "no_back_designs": "No Back Blouse Designs Yet",
+      "no_back_designs_desc": "Back blouse design options will appear here once added."
+    },
+
+    "pattern_types": {
+      "blouses": "Blouses",
+      "kurtis": "Kurtis",
+      "blouse_back_designs": "Blouse Back Designs",
+      "blouse_front_designs": "Blouse Front Designs",
+      "sleeve_designs": "Sleeve Designs",
+      "pants": "Pants"
+    },
+
+    "modal": {
+      "generate_pattern": "Generate Pattern",
+      "your_measurements": "Your Measurements:",
+      "customer": "Customer:",
+      "change": "Change",
+      "select_customer": "Select Customer *",
+      "select_customer_placeholder": "-- Select Customer --",
+      "payment_required": "Paid pattern - payment required.",
+      "measurements_title": "Measurements",
+      "bust": "Bust:",
+      "chest": "Chest:",
+      "waist": "Waist:",
+      "shoulder": "Shoulder:",
+      "fshoulder": "F.Shoulder:",
+      "armhole": "Armhole:",
+      "flength": "F.Length:",
+      "blength": "B.Length:",
+      "fndepth": "F.N.Depth:",
+      "bndepth": "B.N.Depth:",
+      "apex": "Apex:",
+      "slength": "S.Length:",
+      "saround": "S.Around:",
+      "sopen": "S.Opening:",
+      "loading_pattern": "Loading pattern...",
+      "add_measurements_preview": "Add your measurements to preview pattern",
+      "select_customer_preview": "Select a customer to preview pattern",
+      "front_pattern": "Front Pattern",
+      "back_pattern": "Back Pattern",
+      "sleeve_pattern": "Sleeve Pattern",
+      "waist_band": "Waist Band (Patti)",
+      "not_available": "Not available",
+      "cancel": "Cancel",
+      "buy_pattern": "Buy Pattern",
+      "could_not_load": "Could not load patterns",
+      "failed_to_load": "Failed to load pattern"
+    },
+
+    "toast": {
+      "add_measurements_first": "Please add your measurements first before generating a pattern",
+      "select_customer_first": "Please select a customer before generating a pattern",
+      "select_customer_required": "Please select a customer first!"
+    },
+
+    "messages": {
+      "measurements_updated": "Measurements updated successfully!",
+      "measurements_saved": "Measurements saved successfully!"
+    },
+
+    "steps_guide": {
+      "title": "Steps to download the Pattern:",
+      "step1": "Select Customer from Left column (if your customer is not available, click on 'New Customer').",
+      "step2": "Once you select the customer / Added New customer, Select the Pattern Style. It will take you to next steps."
+    }
+  },
+
+  "pattern_preview": {
+    "page_title": "Pattern Preview",
+    "back_to_dashboard": "Back to Dashboard",
+    "customer": "Customer:",
+    "price": "Price:",
+    "free": "FREE",
+    "pattern_not_found": "Pattern Not Found",
+    "pattern_not_available": "The requested pattern type \"{type}\" is not available.",
+
+    "buttons": {
+      "download_label": "Download",
+      "buy_label": "Buy",
+      "download_pdf": "Download PDF",
+      "download_svg": "Download SVG",
+      "download_projector_pdf": "Download Projector PDF",
+      "download_projector_png": "Download Projector PNG",
+      "buy_pdf": "Buy PDF",
+      "buy_svg": "Buy SVG",
+      "buy_projector_pdf": "Buy Projector PDF",
+      "buy_projector_png": "Buy Projector PNG"
+    },
+
+    "disclaimer": {
+      "title": "Important Notice",
+      "intro": "Please read this disclaimer before proceeding with your download:",
+      "warning": "The pattern templates generated based on predefined measurements, it may or may not match your customer requirements. PLEASE DOUBLE CHECK THE PATTERN WITH YOUR / CUSTOMER MEASUREMENTS.",
+      "before_cutting": "Before cutting your fabric, please:",
+      "check_1": "Print the pattern at 100% scale",
+      "check_2": "Verify the printed measurements match your requirements",
+      "check_3": "Make a test cut on scrap fabric if needed",
+      "check_4": "Make sure the selected paper size is available on the printer",
+      "check_5": "All measurements are in Inches, so do the calculation accordingly",
+      "cancel_btn": "I Don't Want to Download",
+      "proceed_btn": "I Agree and Proceed to Download"
+    }
+  },
+
+  "pattern_download": {
+    "page_title": "Download Pattern",
+    "back_to_dashboard": "Back to Dashboard",
+    "pattern_ready": "Your Pattern is Ready!",
+    "click_to_download_pdf": "Click the button below to download your pattern PDF",
+    "click_to_download_svg": "Click the button below to download your pattern SVG files",
+    "click_to_download_projector": "Click the button below to download your Projector PDF",
+    "click_to_download_projector_png": "Click the button below to download your Projector PNG files",
+    "customer": "Customer:",
+    "pattern_id": "Pattern ID:",
+    "no_measurements": "No measurements found for this customer. Please add measurements first.",
+
+    "paper_size": {
+      "label": "Select Paper Size",
+      "required": "*",
+      "placeholder": "-- Select Paper Size --",
+      "error_msg": "Please select a paper size before downloading",
+      "a0": "A0 (33.1 × 46.8 in) - Large Format",
+      "a2": "A2 (16.5 × 23.4 in) - Large Format",
+      "a3": "A3 (11.7 × 16.5 in) - Recommended",
+      "a4": "A4 (8.3 × 11.7 in) - Tiled",
+      "letter": "US Letter (8.5 × 11 in) - Tiled",
+      "legal": "US Legal (8.5 × 14 in) - Tiled",
+      "tabloid": "Tabloid (11 × 17 in)",
+      "desc_a0": "33.1 × 46.8 in - Full pattern on single large sheet",
+      "desc_a2": "16.5 × 23.4 in - Full pattern on single sheet",
+      "desc_a3": "11.7 × 16.5 in - Recommended for home printers",
+      "desc_a4": "8.3 × 11.7 in - Pattern tiled across multiple pages",
+      "desc_letter": "8.5 × 11 in - Pattern tiled across multiple pages",
+      "desc_legal": "8.5 × 14 in - Pattern tiled across multiple pages",
+      "desc_tabloid": "11 × 17 in - Full pattern on single sheet"
+    },
+
+    "buttons": {
+      "download_pdf": "Download Pattern PDF",
+      "download_svg": "Download SVG Pattern (ZIP)",
+      "download_projector_pdf": "Download Projector PDFs",
+      "download_projector_png": "Download Projector PNGs"
+    },
+
+    "svg_format": {
+      "title": "Format: SVG Vector Files (ZIP)",
+      "description": "4 scalable vector files (Front, Back, Sleeve, Patti) bundled in a ZIP archive.",
+      "note": "These files can be edited in design software like Adobe Illustrator or Inkscape."
+    },
+
+    "projector_pdf": {
+      "title": "Format: Projector PDF (Individual Files)",
+      "description": "Custom-sized pages for projector-based pattern cutting. Download each piece separately.",
+      "note": "Start with the calibration box to set your projector scale.",
+      "info": "Each pattern piece downloads as a separate PDF file - no unzipping required! Start with the Scale Calibration to adjust your projector before cutting."
+    },
+
+    "projector_png": {
+      "title": "Format: Projector PNG (Individual Files)",
+      "description": "High-resolution PNG images for projector-based pattern cutting. Download each piece separately.",
+      "note": "Start with the calibration box to set your projector scale.",
+      "info": "Each pattern piece downloads as a separate PNG file at 150 DPI. Start with the Scale Calibration to adjust your projector before cutting."
+    },
+
+    "tiled_printing": {
+      "title": "Tiled Printing:",
+      "description": "This pattern will be split across multiple pages with 5cm overlap areas. Print at 100% scale, then cut and tape the pages together using the alignment marks."
+    },
+
+    "footer": {
+      "message": "Your pattern has been customized based on the customer's measurements.",
+      "print_scale": "Print at 100% scale for accurate sizing."
+    },
+
+    "modal": {
+      "download_started": "Download Started!",
+      "pdf_downloading": "Your pattern PDF is being downloaded to your device.",
+      "what_next": "What to do next:",
+      "step1_title": "Check your Downloads folder",
+      "step1_desc": "The file should appear in your browser's default download location (usually ~/Downloads)",
+      "step2_title": "Print at 100% scale",
+      "step2_desc": "Do not scale to fit page - this will change the pattern measurements",
+      "step3_title": "Verify the scale",
+      "step3_desc": "Use the 2\" × 2\" test box on the pattern to confirm accurate printing",
+      "got_it": "Got it!",
+      "close": "Close"
+    },
+
+    "projector_modal": {
+      "title": "Projector Pattern Files",
+      "subtitle": "Download each pattern piece individually - no unzipping needed!",
+      "tip": "Download the Scale Calibration first and use the 10\" × 10\" box to adjust your projector before cutting patterns.",
+      "loading": "Loading pattern files...",
+      "error": "Error loading patterns",
+      "scale_calibration": "Scale Calibration",
+      "scale_desc": "10\" × 10\" calibration box",
+      "front": "Front",
+      "front_desc": "Front pattern piece",
+      "back": "Back",
+      "back_desc": "Back pattern piece",
+      "patti": "Patti",
+      "patti_desc": "Patti pattern piece",
+      "sleeve": "Sleeve",
+      "sleeve_desc": "Sleeve pattern piece",
+      "download": "Download"
+    },
+
+    "projector_png_modal": {
+      "title": "Projector PNG Files",
+      "subtitle": "Download each pattern piece as a high-resolution PNG image"
+    }
+  },
+
+  "auth": {
+    "login": "Login",
+    "logout": "Logout",
+    "register": "Register",
+    "forgot_password": "Forgot Password?",
+    "reset_password": "Reset Password",
+    "email": "Email Address",
+    "password": "Password",
+    "confirm_password": "Confirm Password",
+    "remember_me": "Remember Me",
+    "dont_have_account": "Don't have an account?",
+    "already_have_account": "Already have an account?",
+    "sign_up": "Sign Up",
+    "sign_in": "Sign In"
+  },
+
+  "validation": {
+    "required": "This field is required",
+    "invalid_email": "Invalid email address",
+    "invalid_phone": "Invalid phone number",
+    "min_length": "Minimum {min} characters required",
+    "max_length": "Maximum {max} characters allowed",
+    "passwords_not_match": "Passwords do not match",
+    "invalid_value": "Invalid value"
+  },
+
+  "footer": {
+    "tagline": "CUSTOMIZED PATTERN DESIGNING FOR MEN & WOMEN & MANUFACTURING",
+    "since": "Serving Customers Since 2018",
+    "copyright": "© {year} CuttingMaster. All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms & Conditions",
+    "support": "Support",
+    "about": "About Us"
+  },
+
+  "print_instructions": {
+    "title": "Printing Instructions",
+    "step1": "Print at 100% scale",
+    "step2": "Do not scale to fit page",
+    "step3": "Verify with 2\" x 2\" test box",
+    "check_downloads": "Check your Downloads folder",
+    "scale_warning": "Scaling will change pattern measurements"
+  },
+
+  "projector": {
+    "mode": "Projector Mode",
+    "calibration": "Scale Calibration",
+    "calibration_desc": "10\" x 10\" calibration box",
+    "adjust_projector": "Adjust your projector until this box measures exactly 10\" x 10\"",
+    "download_each": "Download each pattern piece individually",
+    "tip": "Tip: Download the Scale Calibration first",
+    "files": "Projector Pattern Files",
+    "png_files": "Projector PNG Files",
+    "no_unzip": "No unzipping needed!"
+  },
+
+  "payment": {
+    "payment": "Payment",
+    "pay_now": "Pay Now",
+    "total": "Total",
+    "subtotal": "Subtotal",
+    "tax": "Tax",
+    "free": "Free",
+    "price": "Price",
+    "payment_success": "Payment Successful",
+    "payment_failed": "Payment Failed"
+  },
+
+  "disclaimer": {
+    "title": "Disclaimer",
+    "pattern_accuracy": "Pattern accuracy depends on correct measurements",
+    "professional_advice": "Seek professional advice if unsure",
+    "agree_terms": "By continuing, you agree to our terms"
+  },
+
+  "errors": {
+    "404": "Page Not Found",
+    "500": "Server Error",
+    "no_data": "No data found",
+    "session_expired": "Session expired. Please login again.",
+    "unauthorized": "Unauthorized access",
+    "connection_error": "Connection error. Please check your internet."
+  },
+
+  "units": {
+    "inches": "in",
+    "centimeters": "cm",
+    "dpi": "DPI"
+  },
+
+  "time": {
+    "today": "Today",
+    "yesterday": "Yesterday",
+    "days_ago": "{count} days ago",
+    "just_now": "Just now"
+  },
+
+  "home": {
+    "hero_tag": "CUSTOM PATTERN MAKING FOR TAILORING",
+    "hero_title_1": "Craftsmanship",
+    "hero_title_2": "Meets",
+    "hero_title_3": "Elegance",
+    "hero_description": "Exquisite made-to-measure pattern making services for the discerning woman. Every stitch tells a story of precision, every seam celebrates individuality.",
+    "btn_pattern_making": "PATTERN MAKING",
+    "btn_view_portfolio": "VIEW PORTFOLIO",
+    "hero_quote": "Every garment is a canvas for your unique story",
+    "hero_author": "MASTER TAILOR",
+
+    "portfolio_tag": "Our Work",
+    "portfolio_title": "Portfolio",
+    "portfolio_title_accent": "Gallery",
+    "filter_pattern": "PATTERN MAKING",
+    "filter_wholesale": "WHOLESALE MARKETPLACE",
+    "filter_tailoring": "CUSTOMIZED TAILORING",
+
+    "callout_designer": "Are you a Pattern Designer? Start earning from your designs →",
+    "callout_wholesaler": "Are you a Wholesaler or Garment Manufacturer? Showcase your catalog with us →",
+
+    "services_tag": "Our Expertise",
+    "services_title": "Measured to",
+    "services_title_accent": "Perfection",
+
+    "service1_title": "Pattern Making",
+    "service1_desc": "Choose from custom patterns tailored to your unique designs or select from our pre-designed patterns—both crafted precisely to your measurements for a perfect fit.",
+    "service1_feature1": "Custom patterns from your designs",
+    "service1_feature2": "Pre-designed pattern collection",
+    "service1_feature3": "Made to your measurements",
+    "service1_feature4": "Digital pattern delivery",
+
+    "service2_title": "Wholesale Marketplace",
+    "service2_desc": "A dedicated marketplace for wholesalers and garment manufacturers to showcase their products. Connect directly with retailers and boutiques looking for quality bulk orders.",
+    "service2_feature1": "Showcase your collections",
+    "service2_feature2": "Connect with buyers directly",
+    "service2_feature3": "Promote your brand",
+    "service2_feature4": "Expand your reach",
+
+    "service3_title": "Customized Tailoring",
+    "service3_desc": "Custom-fitted garments crafted to your exact measurements and preferences. From elegant evening wear to professional attire, each piece is a testament to precision craftsmanship.",
+    "service3_feature1": "Personal consultations",
+    "service3_feature2": "Premium fabric selection",
+    "service3_feature3": "Multiple fittings",
+    "service3_feature4": "Lifetime alterations",
+
+    "learn_more": "LEARN MORE",
+
+    "why_tag": "Why CuttingMaster",
+    "why_title_1": "Decades of Excellence,",
+    "why_title_2": "Timeless",
+    "why_title_3": "Artistry",
+    "why_description": "With over 40 years of combined experience, our master tailors bring techniques and attention to detail to every creation. We source the finest patterns globally and maintain the highest standards of craftsmanship.",
+
+    "why_feature1_title": "Personalized Service",
+    "why_feature1_desc": "One-on-one consultations to understand your style, preferences, and lifestyle",
+    "why_feature2_title": "Perfect Fit Guarantee",
+    "why_feature2_desc": "Multiple fittings and adjustments until you're completely satisfied",
+    "why_feature3_title": "Heritage Techniques",
+    "why_feature3_desc": "Traditional methods passed down through generations of master tailors",
+
+    "cta_title_1": "Begin Your Customized Pattern",
+    "cta_title_2": "Journey",
+    "cta_title_3": "Today",
+
+    "modal_designer_title": "Sell Your Patterns on",
+    "modal_designer_subtitle": "Join our community of talented pattern designers",
+    "modal_benefit1_title": "Reach More Customers",
+    "modal_benefit1_desc": "Access our growing community of tailors and fashion enthusiasts looking for quality patterns",
+    "modal_benefit2_title": "Earn Passive Income",
+    "modal_benefit2_desc": "Upload once, earn repeatedly. Set your own prices and receive payments directly",
+    "modal_benefit3_title": "Protected Designs",
+    "modal_benefit3_desc": "Your patterns are securely hosted with watermark protection and download tracking",
+    "modal_benefit4_title": "Analytics & Insights",
+    "modal_benefit4_desc": "Track your sales, views, and customer feedback to grow your pattern business",
+    "btn_get_started": "Get Started",
+    "btn_maybe_later": "Maybe Later",
+
+    "modal_wholesaler_title": "Showcase Your Catalog on",
+    "modal_wholesaler_subtitle": "Join our marketplace as a wholesaler or garment manufacturer",
+    "modal_wbenefit1_title": "Increased Visibility",
+    "modal_wbenefit1_desc": "Get your catalog in front of retailers, boutiques, and fashion businesses actively looking for suppliers",
+    "modal_wbenefit2_title": "Direct Buyer Connections",
+    "modal_wbenefit2_desc": "Connect directly with potential buyers without intermediaries, building lasting business relationships",
+    "modal_wbenefit3_title": "Professional Catalog Display",
+    "modal_wbenefit3_desc": "Present your collections with stunning catalog pages, multiple variants, and detailed specifications",
+    "modal_wbenefit4_title": "Grow Your Business",
+    "modal_wbenefit4_desc": "Expand your reach beyond local markets and tap into a wider network of fashion industry buyers",
+
+    "how_to_use_tag": "How to Use",
+    "how_to_use_title": "Simple",
+    "how_to_use_title_accent": "4-Step",
+    "how_to_use_title_end": "Process",
+    "how_to_use_description": "Get your custom-fitted pattern in just four easy steps. From entering measurements to cutting your fabric perfectly.",
+    "step1_title": "Enter Measurements",
+    "step1_desc": "Enter the measurements in the Pattern-Studio form",
+    "step2_title": "Register / Login",
+    "step2_desc": "Register / Login to download the Pattern",
+    "step3_title": "Print or Project",
+    "step3_desc": "Print on paper or use Projector to project and trace the Pattern",
+    "step4_title": "Measure & Cut",
+    "step4_desc": "Measure the Pattern twice and make edits if required, then cut the Cloth"
+  },
+
+  "pattern_studio": {
+    "title": "Pattern",
+    "title_accent": "Studio",
+    "description": "Enter body measurements to receive custom-fitted patterns designed specifically for you",
+    "success_message": "Measurements saved successfully!",
+
+    "measurements_of": "Measurements of:",
+    "customer": "Customer",
+    "self": "Self",
+    "customer_name": "Customer Name:",
+    "customer_name_placeholder": "Enter name",
+    "mobile_number": "Mobile#:",
+    "mobile_placeholder": "Enter number",
+
+    "category": "Category:",
+    "women": "Women",
+    "men": "Men",
+    "boy": "Boy",
+    "girl": "Girl",
+
+    "pattern_type": "Pattern Type:",
+    "blouses": "Blouses",
+    "kurtis": "Kurtis",
+    "pants": "Pants",
+    "skirts": "Skirts",
+
+    "blouse_types": {
+      "saree_blouse": "Saree Blouse",
+      "princess_blouse": "Princess Blouse",
+      "choli_blouse": "Choli Blouse",
+      "single_katori": "Single Katori Blouse",
+      "double_katori": "Double Katori Blouse",
+      "designer_front_back": "Designer Blouse Front and Back Designs",
+      "designer_sleeves": "Designer Sleeve Designs"
+    },
+
+    "fields": {
+      "blouse_back_length": "Blouse Back Length (1)",
+      "full_shoulder": "Full Shoulder (2)",
+      "shoulder_strap": "Shoulder Strap (3)",
+      "back_neck_depth": "Back Neck Depth (4)",
+      "front_neck_depth": "Front Neck Depth (5)",
+      "shoulder_to_apex": "Shoulder to Apex (6)",
+      "front_length": "Front Length (7)",
+      "upper_chest": "Upper Chest (8)",
+      "upper_chest_placeholder": "bottom of arm hole",
+      "bust_round": "Bust Round (9)",
+      "waist_round": "Waist Round (10)",
+      "sleeve_length": "Sleeve Length (11)",
+      "arm_round": "Arm Round (12)",
+      "sleeve_end_round": "Sleeve End Round (13)",
+      "armhole": "Armhole (14)",
+      "additional_notes": "Additional Notes"
+    },
+
+    "measurement_guide": "Measurement Guide",
+    "generate_pattern": "Generate Blouse Pattern",
+    "update_measurements": "Update Measurements",
+    "generating": "Generating...",
+
+    "validation": {
+      "required": "Required",
+      "min_value": "Min: {min}",
+      "max_value": "Max: {max}"
+    }
+  },
+
+  "register": {
+    "title": "Create",
+    "title_accent": "Account",
+    "description": "Sign up to get started with CuttingMaster",
+
+    "are_you_a": "Are you a:",
+    "individual": "Individual",
+    "individual_desc": "(downloading for self)",
+    "boutique": "Boutique / Tailor",
+    "boutique_desc": "(for self and customers)",
+    "pattern_provider": "Pattern Provider / Designer",
+    "pattern_provider_desc": "(Want to sell your Pattern in PDF)",
+    "wholesaler": "Market Place for Wholesalers",
+    "wholesaler_desc": "(offering garment catalogs at wholesale prices)",
+
+    "your_name": "Your Name",
+    "your_name_placeholder": "Enter your name",
+    "business_name_boutique": "Name of the Business (Boutique / Tailor Shop Name)",
+    "business_name_default": "Name of the Business",
+    "business_name_placeholder": "Enter business name",
+    "location": "Location",
+    "location_placeholder": "Enter business location",
+    "mobile_number": "Mobile Number",
+    "mobile_placeholder": "Enter mobile number",
+    "email": "Email",
+    "email_placeholder": "Enter your email",
+    "password": "Password",
+    "password_placeholder": "Enter password (min. 6 characters)",
+
+    "register_btn": "REGISTER",
+    "already_have_account": "Already have an account?",
+    "login_here": "Login here",
+
+    "errors": {
+      "fill_required": "Please fill in all required fields.",
+      "invalid_email": "Please enter a valid email address.",
+      "username_short": "Username must be at least 3 characters long.",
+      "password_short": "Password must be at least 6 characters long.",
+      "fill_business": "Please fill in all business fields for your account type."
+    },
+
+    "success": {
+      "can_login": "You can now login."
+    }
+  },
+
+  "blog": {
+    "page_title": "Tailoring Tips & Guides",
+    "meta_description": "Expert tips on pattern making, blouse fitting, fabric selection and tailoring techniques. Learn from professionals.",
+    "tag": "KNOWLEDGE HUB",
+    "title": "Tailoring Tips & Guides",
+    "description": "Expert advice on pattern making, fitting techniques, and fabric selection to help you create perfect garments.",
+    "all_posts": "All Posts",
+    "read_more": "Read More",
+    "back_to_blog": "Back to Blog",
+    "no_posts": "No Posts Found",
+    "no_posts_desc": "Check back soon for new articles and guides.",
+    "post_not_found": "Post Not Found",
+    "post_not_found_desc": "The article you're looking for doesn't exist or has been moved.",
+    "related_posts": "Related Articles",
+    "read_in": "Read in",
+    "english_only": "English Only",
+    "translation_not_available": "This article is not yet available in your language. Showing English version."
+  },
+
+  "login": {
+    "welcome_back": "Welcome Back",
+    "title": "Login",
+    "description": "Sign in to your CuttingMaster account",
+    "email": "Email",
+    "email_placeholder": "Enter your email",
+    "password": "Password",
+    "password_placeholder": "Enter your password",
+    "forgot_password": "Forgot Password?",
+    "login_btn": "LOGIN",
+    "no_account": "Don't have an account?",
+    "register_here": "Register here",
+    "login_to_save": "Please log in to save your measurements.",
+
+    "first_time": "First Time Here?",
+    "first_time_desc": "Create your free account to save measurements and access them anytime from your dashboard!",
+    "register_now": "Register Now",
+
+    "errors": {
+      "fill_both": "Please enter both email and password."
+    },
+
+    "success": {
+      "measurements_saved": "Login successful! Your measurements have been saved.",
+      "measurements_error": "Login successful, but there was an error saving your measurements. Please try again."
+    }
+  }
+}

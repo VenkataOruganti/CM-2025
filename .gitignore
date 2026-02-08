@@ -1,0 +1,40 @@
+# Data directory (contains user data)
+data/
+
+# Database credentials (NEVER commit!)
+config/database.php
+
+# Vendor directory (install via composer)
+vendor/
+
+# PHP specific
+*.log
+.htaccess
+
+# OS files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# IDE / Editor files
+.idea/
+.vscode/
+*.sublime-*
+
+# Claude Code local files
+.claude/
+
+# Development tools (LOCAL ONLY)
+patterns/patternEditor.php
+patterns/patternEditor.js
+patterns/patternEditor.css
+
+# Debug files
+debug_*.php
+
+# Local database files
+*.db
+*.sqlite
+
+
