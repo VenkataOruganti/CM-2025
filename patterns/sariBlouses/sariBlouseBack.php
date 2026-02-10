@@ -143,6 +143,10 @@ $b4_x = $tuckCenter_x + (($bottomTuckWidth / 2) * $scale);
 // =============================================================================
 $backNodes = [];
 
+// Calculate z9.y early so other nodes can reference it
+// If back neck depth > 8", add 0.10" drop (shared formula in deepNeck.php)
+$back_z9_y = $originY + (getShoulderLineYOffset($bnDepth) * $scale);
+
 // Back Node 0: Origin (top-left corner) - GRAY reference point
 $backNodes['z0'] = [
     'x' => $originX,
@@ -164,9 +168,9 @@ $backNodes['z1'] = [
 // Back Node 2: Back Length point (bottom left corner)
 $backNodes['z2'] = [
     'x' => $originX,
-    'y' => $originY + ($blength * $scale),
+    'y' => $back_z9_y + ($blength * $scale),
     'label' => 'Back Length',
-    'code' => '$z2 = z0.x, z0.y + blength'
+    'code' => '$z2 = z0.x, z9.y + blength'
 ];
 
 // Back Node 3: Waist point (bust/4 from origin), 0.5" above z2
@@ -237,17 +241,17 @@ $backNodes['zB1'] = [
 // Back Node 9: Shoulder Line (top, end of shoulder near neck)
 $backNodes['z9'] = [
     'x' => $pointA_x - ($shoulder * $scale),
-    'y' => $originY,
+    'y' => $back_z9_y,
     'label' => 'Shoulder Line',
-    'code' => '$z9 = z8.x - shoulder'
+    'code' => '$z9 = z8.x - shoulder, y = originY + 0.10" if bnDepth > 8"'
 ];
 
 // Back Node 91: Midpoint between z9 and z1 (for neck curve)
 $backNodes['z91'] = [
-    'x' => $shoulderLine_x,
+    'x' => $shoulderLine_x + (0.25 * $scale),
     'y' => ($backNodes['z1']['y'] + $backNodes['z9']['y']) / 2,
     'label' => 'z91',
-    'code' => '$z91 = z9.x, (z1.y + z9.y) / 2'
+    'code' => '$z91 = z9.x + 0.25", (z1.y + z9.y) / 2'
 ];
 
 // Back Shoulder Mid: Reference point (gray)
@@ -584,8 +588,8 @@ ob_start();
           x2="<?php echo bn('z8','x'); ?>" y2="<?php echo bn('z8','y'); ?>"
           stroke="#000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 
-    <!-- Back neck curve: z1 to z9 passing through z91 -->
-    <path d="M <?php echo bn('z1','x'); ?>,<?php echo bn('z1','y'); ?> Q <?php echo bn('z91','x'); ?>,<?php echo bn('z1','y'); ?> <?php echo bn('z91','x'); ?>,<?php echo bn('z91','y'); ?> Q <?php echo bn('z91','x'); ?>,<?php echo bn('z9','y'); ?> <?php echo bn('z9','x'); ?>,<?php echo bn('z9','y'); ?>"
+    <!-- Back neck: z9 to z91 (straight line), z91 to z1 (curve) -->
+    <path d="M <?php echo bn('z9','x'); ?>,<?php echo bn('z9','y'); ?> L <?php echo bn('z91','x'); ?>,<?php echo bn('z91','y'); ?> Q <?php echo bn('z91','x'); ?>,<?php echo bn('z1','y'); ?> <?php echo bn('z1','x'); ?>,<?php echo bn('z1','y'); ?>"
           stroke="#000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
 
     <!-- Fold line text (center back - between z1 and z2) -->

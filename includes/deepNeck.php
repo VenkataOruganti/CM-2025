@@ -101,6 +101,17 @@ function getArmHoleHeight($bust) {
 }
 
 /**
+ * Calculate shoulder line Y offset
+ * If back neck depth > 8", add 0.10" drop to shoulder line
+ *
+ * @param float $bnDepth Back neck depth in inches
+ * @return float Y offset in inches (0 or 0.10)
+ */
+function getShoulderLineYOffset($bnDepth) {
+    return ($bnDepth > 8) ? 0.10 : 0;
+}
+
+/**
  * Calculate sleeve cap dimensions based on waist, armhole, and saround (bicep)
  *
  * Geometry:

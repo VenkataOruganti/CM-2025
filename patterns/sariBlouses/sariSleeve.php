@@ -105,7 +105,7 @@ $perpendicular_s2_s1 = $angle_s2_s1 + (M_PI / 2);
 $angle_s1_s3 = atan2($rightShoulderY - $capY, $rightShoulderX - $capX);
 
 // S-CURVE parameters
-$sCurveDepth = 1.3 * $scale;
+$sCurveDepth = 1.6 * $scale;
 
 // Control points for s2→s1
 $ctrl1_s2s1_t = 0.35;
@@ -132,8 +132,8 @@ $ctrl1_s1s3_y = $ctrl1_s1s3_base_y - sin($perpendicular_s1_s3) * (1.0 * $scale);
 $ctrl2_s1s3_t = 0.75;
 $ctrl2_s1s3_base_x = $capX + ($rightShoulderX - $capX) * $ctrl2_s1s3_t;
 $ctrl2_s1s3_base_y = $capY + ($rightShoulderY - $capY) * $ctrl2_s1s3_t;
-$ctrl2_s1s3_x = $ctrl2_s1s3_base_x + cos($perpendicular_s1_s3) * (0.2 * $scale);
-$ctrl2_s1s3_y = $ctrl2_s1s3_base_y + sin($perpendicular_s1_s3) * (0.2 * $scale);
+$ctrl2_s1s3_x = $ctrl2_s1s3_base_x + cos($perpendicular_s1_s3) * (0.0 * $scale);
+$ctrl2_s1s3_y = $ctrl2_s1s3_base_y + sin($perpendicular_s1_s3) * (0.0 * $scale);
 
 // Calculate actual curved path lengths for reference
 $s2_s1_length = 0;

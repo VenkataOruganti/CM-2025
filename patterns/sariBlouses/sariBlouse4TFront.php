@@ -178,11 +178,13 @@ $frontNodes['a10'] = [
 ];
 
 // Node 11: Shoulder Line (top, end of shoulder near neck)
+// If back neck depth > 8", add 0.10" drop (matches z9.y in back pattern)
+$front_a11_y = $originY + (getShoulderLineYOffset($bnDepth) * $scale);
 $frontNodes['a11'] = [
     'x' => $pointA_x - ($shoulder * $scale),
-    'y' => $originY,
+    'y' => $front_a11_y,
     'label' => 'Shoulder Line',
-    'code' => '$a11 = a10.x - shoulder(' . number_format($shoulder, 2) . '"), a0.y'
+    'code' => '$a11 = a10.x - shoulder(' . number_format($shoulder, 2) . '"), originY + 0.10" if bnDepth > 8"'
 ];
 
 // Node 111: Midpoint between a11 and a1 (for neck curve) - y centered

@@ -96,11 +96,13 @@ $frontNodes['a1'] = [
 ];
 
 // Node 3: Front Length point (bottom left corner - vertical down from a1)
+// a3.y is relative to a11.y (includes shoulder offset when bnDepth > 8)
+$front_a3_y = $originY + (getShoulderLineYOffset($bnDepth) * $scale) + (($flength - 1.0) * $scale);
 $frontNodes['a3'] = [
     'x' => $originX - (0.25 * $scale),
-    'y' => $originY + (($flength - 1.0) * $scale),
+    'y' => $front_a3_y,
     'label' => 'Front Length',
-    'code' => '$a3 = originX - 0.25", a0.y + flength(' . number_format($flength, 2) . '")'
+    'code' => '$a3 = originX - 0.25", a11.y + flength - 1.0"'
 ];
 
 // Node 4 & 41: Minimum 2.5" tuck width at bottom
@@ -110,14 +112,14 @@ $tuckDeficit = $tuckWidth - $bottomTuckWidth;  // extra width added (0 if no adj
 
 $frontNodes['a4'] = [
     'x' => $shoulderMid_x - (($tuckWidth / 2) * $scale),
-    'y' => $originY + (($flength + 0.5) * $scale),
+    'y' => $originY + (getShoulderLineYOffset($bnDepth) * $scale) + (($flength + 0.5) * $scale),
     'label' => 'a4',
     'code' => '$a4 = sMid.x - ' . number_format($tuckWidth / 2, 2) . '", a0.y + flength(' . number_format($flength, 2) . '") + 0.5" [tuck=' . number_format($tuckWidth, 2) . '"]'
 ];
 
 $frontNodes['a41'] = [
     'x' => $shoulderMid_x + (($tuckWidth / 2) * $scale),
-    'y' => $originY + (($flength + 0.5) * $scale),
+    'y' => $originY + (getShoulderLineYOffset($bnDepth) * $scale) + (($flength + 0.5) * $scale),
     'label' => 'a41',
     'code' => '$a41 = sMid.x + ' . number_format($tuckWidth / 2, 2) . '", a4.y [tuck=' . number_format($tuckWidth, 2) . '"]'
 ];
@@ -182,11 +184,13 @@ $frontNodes['a10'] = [
 ];
 
 // Node 11: Shoulder Line (top, end of shoulder near neck)
+// If back neck depth > 8", add 0.10" drop (matches z9.y in back pattern)
+$front_a11_y = $originY + (getShoulderLineYOffset($bnDepth) * $scale);
 $frontNodes['a11'] = [
     'x' => $pointA_x - ($shoulder * $scale),
-    'y' => $originY,
+    'y' => $front_a11_y,
     'label' => 'Shoulder Line',
-    'code' => '$a11 = a10.x - shoulder(' . number_format($shoulder, 2) . '"), a0.y'
+    'code' => '$a11 = a10.x - shoulder(' . number_format($shoulder, 2) . '"), originY + 0.10" if bnDepth > 8"'
 ];
 
 // Node 111: Midpoint between a11 and a1 (for neck curve) - y centered
@@ -307,42 +311,6 @@ $frontNodes['e3'] = [
 // Uniform 0.5" offset from pattern, following the a-nodes
 // =============================================================================
 $seamOffset = 0.5;  // 0.5" uniform offset
-
-// r1: aligned with a3.x, 0.25" below a3 (bottom-left corner)
-$frontNodes['r1'] = [
-    'x' => frontNode('a3','x'),
-    'y' => frontNode('a3','y') + (0.25 * $scale),
-    'label' => 'r1',
-    'color' => 'red',
-    'code' => '$r1 = a3.x, a3.y + 0.25"'
-];
-
-// r2: 0.5" below a4 (waist curve peak)
-$frontNodes['r2'] = [
-    'x' => frontNode('a4','x'),
-    'y' => frontNode('a4','y') + (0.25 * $scale),
-    'label' => 'r2',
-    'color' => 'red',
-    'code' => '$r2 = a4 + 0.25" down'
-];
-
-// r21: Between r2 and r3, at a41.x, r2.y
-$frontNodes['r21'] = [
-    'x' => frontNode('a41','x'),
-    'y' => frontNode('r2','y'),
-    'label' => 'r21',
-    'color' => 'red',
-    'code' => '$r21 = a41.x, r2.y'
-];
-
-// r3: a51.x + 0.25" (1.75" right of a5.x), 0.25" down from a51 (waist right)
-$frontNodes['r3'] = [
-    'x' => frontNode('a51','x'),
-    'y' => frontNode('a51','y') + (0.25 * $scale),
-    'label' => 'r3',
-    'color' => 'red',
-    'code' => '$r3 = a51.x, a51.y + 0.25"'
-];
 
 // r5: a71.x + 0.25" (1.75" right of a7.x), 0.25" up from a71 (intersection)
 $frontNodes['r5'] = [
