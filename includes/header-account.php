@@ -439,3 +439,65 @@ $isWholesaler = isset($currentUser) && ($currentUser['user_type'] ?? '') === 'wh
         }
     })();
     </script>
+
+    <!-- Session Timeout Handler -->
+    <script>
+    (function() {
+        // Check session every 60 seconds
+        var SESSION_CHECK_INTERVAL = 60000;
+
+        // Warning before timeout (5 minutes before)
+        var WARNING_THRESHOLD = 300;
+
+        var warningShown = false;
+        var sessionExpiredModal = null;
+
+        function checkSession() {
+            fetch('ajax-session-check.php', {
+                method: 'GET',
+                credentials: 'same-origin'
+            })
+            .then(function(response) { return response.json(); })
+            .then(function(data) {
+                if (!data.valid) {
+                    // Session expired - show modal and redirect
+                    showSessionExpiredModal();
+                }
+            })
+            .catch(function(error) {
+                console.log('Session check error:', error);
+            });
+        }
+
+        function showSessionExpiredModal() {
+            if (sessionExpiredModal) return; // Already showing
+
+            // Create modal overlay
+            sessionExpiredModal = document.createElement('div');
+            sessionExpiredModal.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.7);z-index:99999;display:flex;align-items:center;justify-content:center;';
+
+            var modalContent = document.createElement('div');
+            modalContent.style.cssText = 'background:#fff;padding:30px 40px;border-radius:12px;text-align:center;max-width:400px;box-shadow:0 10px 40px rgba(0,0,0,0.3);';
+
+            modalContent.innerHTML = '<div style="font-size:48px;margin-bottom:15px;">⏰</div>' +
+                '<h3 style="margin:0 0 10px;font-size:20px;color:#333;"><?php _e("session.expired_title"); ?></h3>' +
+                '<p style="margin:0 0 20px;color:#666;font-size:14px;"><?php _e("session.expired_message"); ?></p>' +
+                '<button onclick="window.location.href=\'login.php?session_expired=1\'" style="background:#8B5A6B;color:#fff;border:none;padding:12px 30px;border-radius:8px;cursor:pointer;font-size:14px;"><?php _e("session.login_again"); ?></button>';
+
+            sessionExpiredModal.appendChild(modalContent);
+            document.body.appendChild(sessionExpiredModal);
+
+            // Disable scrolling
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Start checking after page loads
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', function() {
+                setInterval(checkSession, SESSION_CHECK_INTERVAL);
+            });
+        } else {
+            setInterval(checkSession, SESSION_CHECK_INTERVAL);
+        }
+    })();
+    </script>

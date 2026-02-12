@@ -7,6 +7,12 @@ require_once __DIR__ . '/../includes/lang-init.php';
 $message = '';
 $messageType = '';
 
+// Check if session expired (redirected from session timeout)
+if (isset($_GET['session_expired']) && $_GET['session_expired'] == '1') {
+    $message = __('session.expired_message');
+    $messageType = 'warning';
+}
+
 // Check if there's a pending measurements message from URL (redirected from pattern-studio)
 $fromPatternStudio = isset($_GET['action']) && $_GET['action'] === 'save_measurements';
 if ($fromPatternStudio) {
@@ -44,6 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $_SESSION['email'] = $admin['username'];
                 $_SESSION['user_type'] = 'admin';
                 $_SESSION['is_admin'] = true;
+                $_SESSION['last_activity'] = time(); // Track session activity for timeout
 
                 // Redirect to admin dashboard (or index page if dashboard doesn't exist)
                 $adminDashboard = __DIR__ . '/dashboard-admin.php';
@@ -70,6 +77,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $_SESSION['user_type'] = $result['user']['user_type'];
                 $_SESSION['status'] = $result['user']['status'];
                 $_SESSION['is_admin'] = false;
+                $_SESSION['last_activity'] = time(); // Track session activity for timeout
 
             // Check if there are pending measurements to save
             if (isset($_SESSION['pending_measurements'])) {

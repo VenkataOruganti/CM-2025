@@ -24,9 +24,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_id'])) {
 }
 
 // Pagination settings
-$recordsPerPage = isset($_GET['per_page']) ? intval($_GET['per_page']) : 20;
+$recordsPerPage = isset($_GET['per_page']) ? intval($_GET['per_page']) : 25;
 if (!in_array($recordsPerPage, [10, 25, 50, 100])) {
-    $recordsPerPage = 20;
+    $recordsPerPage = 25;
 }
 $currentPage = isset($_GET['page']) ? max(1, intval($_GET['page'])) : 1;
 $offset = ($currentPage - 1) * $recordsPerPage;
@@ -84,24 +84,9 @@ try {
     $stmt->execute();
     $measurements = $stmt->fetchAll();
 
-    // Get statistics
-    $statsStmt = $pdo->query("
-        SELECT
-            category,
-            COUNT(*) as count,
-            AVG(bust) as avg_bust,
-            AVG(waist) as avg_waist,
-            AVG(hips) as avg_hips,
-            AVG(height) as avg_height
-        FROM public_measurements
-        GROUP BY category
-    ");
-    $stats = $statsStmt->fetchAll();
-
 } catch(PDOException $e) {
     error_log("Error fetching public measurements: " . $e->getMessage());
     $measurements = [];
-    $stats = [];
     $totalRecords = 0;
     $totalPages = 0;
 }

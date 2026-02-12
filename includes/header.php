@@ -377,20 +377,31 @@ require_once __DIR__ . '/lang-init.php';
                                     <i data-lucide="chevron-down" class="nav-dropdown-icon"></i>
                                 </a>
                                 <div class="nav-dropdown-menu">
+                                    <!-- Navigation Links -->
+                                    <a href="<?php echo isset($navBase) ? $navBase : ''; ?>pages/dashboard.php" class="nav-dropdown-link">
+                                        <i data-lucide="layout-dashboard" style="width: 14px; height: 14px;"></i>
+                                        <?php _e('nav.dashboard'); ?>
+                                    </a>
+                                    <a href="<?php echo isset($navBase) ? $navBase : ''; ?>pages/edit-profile.php" class="nav-dropdown-link">
+                                        <i data-lucide="settings" style="width: 14px; height: 14px;"></i>
+                                        <?php _e('dashboard.nav.edit_profile'); ?>
+                                    </a>
+                                    <div class="nav-dropdown-divider"></div>
+                                    <!-- User Info -->
                                     <div class="nav-dropdown-item">
-                                        <span class="nav-dropdown-label">Name:</span>
+                                        <span class="nav-dropdown-label"><?php _e('dashboard.nav.name'); ?>:</span>
                                         <span class="nav-dropdown-value"><?php echo htmlspecialchars($currentUser['username']); ?></span>
                                     </div>
                                     <div class="nav-dropdown-item">
-                                        <span class="nav-dropdown-label">Email:</span>
+                                        <span class="nav-dropdown-label"><?php _e('dashboard.nav.email'); ?>:</span>
                                         <span class="nav-dropdown-value"><?php echo htmlspecialchars($currentUser['email']); ?></span>
                                     </div>
                                     <div class="nav-dropdown-item">
-                                        <span class="nav-dropdown-label">Account Type:</span>
+                                        <span class="nav-dropdown-label"><?php _e('dashboard.nav.account_type'); ?>:</span>
                                         <span class="nav-dropdown-value"><?php echo ucfirst(str_replace('_', ' ', $currentUser['user_type'])); ?></span>
                                     </div>
                                     <div class="nav-dropdown-item">
-                                        <span class="nav-dropdown-label">Status:</span>
+                                        <span class="nav-dropdown-label"><?php _e('dashboard.nav.status'); ?>:</span>
                                         <span class="nav-dropdown-value"><?php echo ucfirst($currentUser['status']); ?></span>
                                     </div>
                                 </div>

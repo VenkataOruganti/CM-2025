@@ -131,7 +131,7 @@ if ($measurementId <= 0) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php _e('pattern_download.page_title'); ?> <?php echo ($format === 'svg') ? 'SVG' : (($format === 'projector') ? 'Projector PDF' : (($format === 'projector_png') ? 'Projector PNG' : 'PDF')); ?> - <?php echo htmlspecialchars($item['title']); ?> - CuttingMaster</title>
+    <title><?php _e('pattern_download.page_title'); ?> <?php echo ($format === 'svg') ? 'SVG' : (($format === 'projector') ? 'Projector PDF' : (($format === 'projector_png') ? 'Projector PNG' : (($format === 'measurement_guide') ? 'Measurement Guide' : 'PDF'))); ?> - <?php echo htmlspecialchars($item['title']); ?> - CuttingMaster</title>
 
     <!-- Google Fonts (including Noto Sans for Telugu/Hindi) -->
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Libre+Franklin:wght@300;400;500;600&family=Noto+Sans:wght@300;400;500;600&family=Noto+Sans+Telugu:wght@300;400;500;600&family=Noto+Sans+Devanagari:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -1055,6 +1055,8 @@ if ($measurementId <= 0) {
                             _e('pattern_download.click_to_download_projector');
                         } elseif ($format === 'projector_png') {
                             _e('pattern_download.click_to_download_projector_png');
+                        } elseif ($format === 'measurement_guide') {
+                            _e('pattern_download.click_to_download_measurement_guide');
                         } else {
                             _e('pattern_download.click_to_download_pdf');
                         }
@@ -1100,12 +1102,14 @@ if ($measurementId <= 0) {
                         $svgUrl = $svgDownloadFile . '?id=' . $measurementId . '&type=' . urlencode($patternType);
                         $projectorUrl = '../patterns/projectorPDF.php?measurement_id=' . $measurementId . '&type=' . urlencode($patternType);
                         $projectorPngUrl = '../patterns/projectorPNG.php?measurement_id=' . $measurementId . '&type=' . urlencode($patternType);
+                        $measurementGuideUrl = '../patterns/measurementGuide.php?id=' . $measurementId . '&type=' . urlencode($item['title']);
                         $isSvgFormat = ($format === 'svg');
                         $isProjectorFormat = ($format === 'projector');
                         $isProjectorPngFormat = ($format === 'projector_png');
+                        $isMeasurementGuideFormat = ($format === 'measurement_guide');
                         ?>
 
-                        <?php if (!$isSvgFormat && !$isProjectorFormat && !$isProjectorPngFormat): ?>
+                        <?php if (!$isSvgFormat && !$isProjectorFormat && !$isProjectorPngFormat && !$isMeasurementGuideFormat): ?>
                         <!-- Paper Size Selector for PDF -->
                         <div id="paperSizeSelectorWrapper" class="paper-size-selector-wrapper">
                             <label class="paper-size-selector-label">
@@ -1196,6 +1200,34 @@ if ($measurementId <= 0) {
                         </div>
                         <?php endif; ?>
 
+                        <?php if ($isMeasurementGuideFormat): ?>
+                        <!-- Measurement Guide Format Info -->
+                        <div class="paper-size-info" style="margin-bottom: 1rem;">
+                            <div class="paper-size-icon" style="background: #FEF3C7;">
+                                <i data-lucide="ruler" style="width: 20px; height: 20px; color: #D97706;"></i>
+                            </div>
+                            <div class="paper-size-details">
+                                <h5><?php _e('pattern_download.measurement_guide.title'); ?></h5>
+                                <p style="margin-bottom: 0.5rem;"><?php _e('pattern_download.measurement_guide.description'); ?></p>
+                                <p style="font-size: 0.75rem; color: #64748B; margin: 0;"><?php _e('pattern_download.measurement_guide.note'); ?></p>
+                            </div>
+                        </div>
+
+                        <a href="<?php echo $measurementGuideUrl; ?>" class="btn-download" style="background: linear-gradient(135deg, #D97706 0%, #B45309 100%);">
+                            <i data-lucide="download"></i>
+                            <?php _e('pattern_download.buttons.download_measurement_guide'); ?>
+                        </a>
+
+                        <div style="margin-top: 1rem; padding: 1rem; background: #FEF3C7; border-radius: 8px; border: 1px solid #F59E0B;">
+                            <div style="display: flex; align-items: flex-start; gap: 0.75rem;">
+                                <i data-lucide="info" style="width: 18px; height: 18px; color: #D97706; flex-shrink: 0; margin-top: 2px;"></i>
+                                <div style="font-size: 0.8rem; color: #92400E;">
+                                    <?php _e('pattern_download.measurement_guide.info'); ?>
+                                </div>
+                            </div>
+                        </div>
+                        <?php endif; ?>
+
                         <?php if ($isSvgFormat): ?>
                         <!-- SVG Download -->
                         <div class="paper-size-info" style="margin-bottom: 1rem;">
@@ -1213,7 +1245,7 @@ if ($measurementId <= 0) {
                             <i data-lucide="download"></i>
                             <?php _e('pattern_download.buttons.download_svg'); ?>
                         </a>
-                        <?php elseif (!$isProjectorFormat && !$isProjectorPngFormat): ?>
+                        <?php elseif (!$isProjectorFormat && !$isProjectorPngFormat && !$isMeasurementGuideFormat): ?>
                         <!-- PDF Download -->
                         <a id="pdfDownloadBtn" href="#" class="btn-download disabled" onclick="return handlePdfDownload(event)">
                             <i data-lucide="download"></i>

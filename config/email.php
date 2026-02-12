@@ -15,8 +15,8 @@ define('SMTP_PASSWORD', 'xsmtpsib-a035ccfe0bc087e91add3496f59625adf116bda722e47a
 define('SMTP_FROM_EMAIL', 'ovkrishnareddy@gmail.com'); // From email address (must be verified in Brevo)
 define('SMTP_FROM_NAME', 'CuttingMaster'); // From name
 
-// Site Configuration for emails (update when moving to production)
-define('SITE_URL', 'http://localhost/CM-2025');
+// Site Configuration for emails
+define('SITE_URL', 'https://cuttingmaster.in');
 define('SITE_NAME', 'CuttingMaster');
 
 /**
@@ -81,9 +81,8 @@ function sendWelcomeEmail($email, $username, $userType) {
 function sendPasswordResetEmail($email, $username, $resetToken) {
     $subject = "Reset Your CuttingMaster Password";
 
-    // Build reset link - use the actual domain in production
-    $baseUrl = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://" . ($_SERVER['HTTP_HOST'] ?? 'localhost');
-    $resetLink = $baseUrl . "/CM-2025/pages/reset-password.php?token=" . urlencode($resetToken);
+    // Build reset link using SITE_URL
+    $resetLink = SITE_URL . "/pages/reset-password.php?token=" . urlencode($resetToken);
 
     $body = getPasswordResetEmailTemplate($username, $resetLink);
 

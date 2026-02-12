@@ -12,6 +12,7 @@
     "wholesale": "Wholesale Marketplace",
     "contact": "Contact Us",
     "account": "Your Account",
+    "dashboard": "Dashboard",
     "login": "Login",
     "logout": "Logout",
     "register": "Register",
@@ -325,6 +326,7 @@
       "download_svg": "Download SVG",
       "download_projector_pdf": "Download Projector PDF",
       "download_projector_png": "Download Projector PNG",
+      "measurement_guide": "Measurement Guide",
       "buy_pdf": "Buy PDF",
       "buy_svg": "Buy SVG",
       "buy_projector_pdf": "Buy Projector PDF",
@@ -354,6 +356,7 @@
     "click_to_download_svg": "Click the button below to download your pattern SVG files",
     "click_to_download_projector": "Click the button below to download your Projector PDF",
     "click_to_download_projector_png": "Click the button below to download your Projector PNG files",
+    "click_to_download_measurement_guide": "Click the button below to download your Pattern Measurement Guide PDF",
     "customer": "Customer:",
     "pattern_id": "Pattern ID:",
     "no_measurements": "No measurements found for this customer. Please add measurements first.",
@@ -383,7 +386,8 @@
       "download_pdf": "Download Pattern PDF",
       "download_svg": "Download SVG Pattern (ZIP)",
       "download_projector_pdf": "Download Projector PDFs",
-      "download_projector_png": "Download Projector PNGs"
+      "download_projector_png": "Download Projector PNGs",
+      "download_measurement_guide": "Download Measurement Guide"
     },
 
     "svg_format": {
@@ -404,6 +408,13 @@
       "description": "High-resolution PNG images for projector-based pattern cutting. Download each piece separately.",
       "note": "Start with the calibration box to set your projector scale.",
       "info": "Each pattern piece downloads as a separate PNG file at 150 DPI. Start with the Scale Calibration to adjust your projector before cutting."
+    },
+
+    "measurement_guide": {
+      "title": "Format: Pattern Measurement Guide (A4 PDF)",
+      "description": "3-page PDF with annotated pattern pieces showing all dimensions and measurements.",
+      "note": "Includes Front, Back, and Sleeve patterns with engineering-style dimension lines.",
+      "info": "This guide helps you understand and verify all pattern measurements before cutting. Print on A4 paper for best results."
     },
 
     "tiled_printing": {
@@ -683,6 +694,13 @@
     "pants": "Pants",
     "skirts": "Skirts",
 
+    "select_pattern": "Select Pattern:",
+    "measurements_heading": "Measurements",
+    "enter_measurements_for": "Enter Measurements for",
+    "in_inches": "(in Inches)",
+    "enter_measurements_title": "Enter measurements for the selected Blouse",
+    "see_image_reference": "For measurement location references, see image on left",
+
     "blouse_types": {
       "saree_blouse": "Saree Blouse",
       "princess_blouse": "Princess Blouse",
@@ -694,21 +712,21 @@
     },
 
     "fields": {
-      "blouse_back_length": "Blouse Back Length (1)",
-      "full_shoulder": "Full Shoulder (2)",
-      "shoulder_strap": "Shoulder Strap (3)",
-      "back_neck_depth": "Back Neck Depth (4)",
-      "front_neck_depth": "Front Neck Depth (5)",
-      "shoulder_to_apex": "Shoulder to Apex (6)",
-      "front_length": "Front Length (7)",
-      "upper_chest": "Upper Chest (8)",
+      "blouse_back_length": "1. Blouse Back Length",
+      "full_shoulder": "2. Full Shoulder",
+      "shoulder_strap": "3. Shoulder Strap",
+      "back_neck_depth": "4. Back Neck Depth",
+      "front_neck_depth": "5. Front Neck Depth",
+      "shoulder_to_apex": "6. Shoulder to Apex",
+      "front_length": "7. Front Length",
+      "upper_chest": "8. Upper Chest",
       "upper_chest_placeholder": "bottom of arm hole",
-      "bust_round": "Bust Round (9)",
-      "waist_round": "Waist Round (10)",
-      "sleeve_length": "Sleeve Length (11)",
-      "arm_round": "Arm Round (12)",
-      "sleeve_end_round": "Sleeve End Round (13)",
-      "armhole": "Armhole (14)",
+      "bust_round": "9. Bust Round",
+      "waist_round": "10. Waist Round",
+      "sleeve_length": "11. Sleeve Length",
+      "arm_round": "12. Arm Round",
+      "sleeve_end_round": "13. Sleeve End Round",
+      "armhole": "14. Armhole",
       "additional_notes": "Additional Notes"
     },
 
@@ -787,6 +805,13 @@
     "read_in": "Read in",
     "english_only": "English Only",
     "translation_not_available": "This article is not yet available in your language. Showing English version."
+  },
+
+  "session": {
+    "expired_title": "Session Expired",
+    "expired_message": "Your session has expired due to inactivity. Please log in again to continue.",
+    "login_again": "Log In Again",
+    "timeout_warning": "Your session will expire soon. Click anywhere to stay logged in."
   },
 
   "login": {

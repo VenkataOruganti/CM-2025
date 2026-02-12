@@ -13,6 +13,7 @@
     "wholesale": "होलसेल मार्केट",
     "contact": "संपर्क करें",
     "account": "आपका खाता",
+    "dashboard": "डैशबोर्ड",
     "login": "लॉगिन",
     "logout": "लॉगआउट",
     "register": "रजिस्टर",
@@ -326,6 +327,7 @@
       "download_svg": "SVG डाउनलोड",
       "download_projector_pdf": "प्रोजेक्टर PDF डाउनलोड",
       "download_projector_png": "प्रोजेक्टर PNG डाउनलोड",
+      "measurement_guide": "माप गाइड",
       "buy_pdf": "PDF खरीदें",
       "buy_svg": "SVG खरीदें",
       "buy_projector_pdf": "प्रोजेक्टर PDF खरीदें",
@@ -355,6 +357,7 @@
     "click_to_download_svg": "अपना पैटर्न SVG फ़ाइलें डाउनलोड करने के लिए नीचे बटन पर क्लिक करें",
     "click_to_download_projector": "अपना प्रोजेक्टर PDF डाउनलोड करने के लिए नीचे बटन पर क्लिक करें",
     "click_to_download_projector_png": "अपनी प्रोजेक्टर PNG फ़ाइलें डाउनलोड करने के लिए नीचे बटन पर क्लिक करें",
+    "click_to_download_measurement_guide": "अपनी पैटर्न माप गाइड PDF डाउनलोड करने के लिए नीचे बटन पर क्लिक करें",
     "customer": "ग्राहक:",
     "pattern_id": "पैटर्न आईडी:",
     "no_measurements": "इस ग्राहक के लिए कोई माप नहीं मिला। कृपया पहले माप जोड़ें।",
@@ -384,7 +387,8 @@
       "download_pdf": "पैटर्न PDF डाउनलोड करें",
       "download_svg": "SVG पैटर्न डाउनलोड करें (ZIP)",
       "download_projector_pdf": "प्रोजेक्टर PDFs डाउनलोड करें",
-      "download_projector_png": "प्रोजेक्टर PNGs डाउनलोड करें"
+      "download_projector_png": "प्रोजेक्टर PNGs डाउनलोड करें",
+      "download_measurement_guide": "माप गाइड डाउनलोड करें"
     },
 
     "svg_format": {
@@ -405,6 +409,13 @@
       "description": "प्रोजेक्टर-आधारित पैटर्न कटिंग के लिए हाई-रेज़ोल्यूशन PNG इमेज। प्रत्येक टुकड़ा अलग से डाउनलोड करें।",
       "note": "अपना प्रोजेक्टर स्केल सेट करने के लिए कैलिब्रेशन बॉक्स से शुरू करें।",
       "info": "प्रत्येक पैटर्न पीस 150 DPI पर अलग PNG फ़ाइल के रूप में डाउनलोड होता है। कटिंग से पहले अपने प्रोजेक्टर को एडजस्ट करने के लिए स्केल कैलिब्रेशन से शुरू करें।"
+    },
+
+    "measurement_guide": {
+      "title": "फॉर्मेट: पैटर्न माप गाइड (A4 PDF)",
+      "description": "सभी आयाम और माप दिखाने वाले एनोटेटेड पैटर्न पीस के साथ 3-पेज PDF।",
+      "note": "इंजीनियरिंग-स्टाइल डायमेंशन लाइन्स के साथ फ्रंट, बैक, और स्लीव पैटर्न शामिल हैं।",
+      "info": "यह गाइड कटिंग से पहले सभी पैटर्न माप को समझने और सत्यापित करने में मदद करती है। सर्वोत्तम परिणामों के लिए A4 पेपर पर प्रिंट करें।"
     },
 
     "tiled_printing": {
@@ -684,6 +695,13 @@
     "pants": "पैंट",
     "skirts": "स्कर्ट",
 
+    "select_pattern": "पैटर्न चुनें:",
+    "measurements_heading": "माप",
+    "enter_measurements_for": "माप दर्ज करें",
+    "in_inches": "(इंच में)",
+    "enter_measurements_title": "चुने हुए ब्लाउज के लिए माप दर्ज करें",
+    "see_image_reference": "माप स्थान संदर्भ के लिए, बाईं ओर छवि देखें",
+
     "blouse_types": {
       "saree_blouse": "साड़ी ब्लाउज",
       "princess_blouse": "प्रिंसेस ब्लाउज",
@@ -695,21 +713,21 @@
     },
 
     "fields": {
-      "blouse_back_length": "ब्लाउज पीठ की लंबाई (1)",
-      "full_shoulder": "पूरा कंधा (2)",
-      "shoulder_strap": "कंधे का पट्टा (3)",
-      "back_neck_depth": "पीछे गले की गहराई (4)",
-      "front_neck_depth": "आगे गले की गहराई (5)",
-      "shoulder_to_apex": "कंधे से एपेक्स (6)",
-      "front_length": "आगे की लंबाई (7)",
-      "upper_chest": "ऊपरी छाती (8)",
+      "blouse_back_length": "1. ब्लाउज पीठ की लंबाई",
+      "full_shoulder": "2. पूरा कंधा",
+      "shoulder_strap": "3. कंधे का पट्टा",
+      "back_neck_depth": "4. पीछे गले की गहराई",
+      "front_neck_depth": "5. आगे गले की गहराई",
+      "shoulder_to_apex": "6. कंधे से एपेक्स",
+      "front_length": "7. आगे की लंबाई",
+      "upper_chest": "8. ऊपरी छाती",
       "upper_chest_placeholder": "बाजू के नीचे",
-      "bust_round": "छाती राउंड (9)",
-      "waist_round": "कमर राउंड (10)",
-      "sleeve_length": "आस्तीन की लंबाई (11)",
-      "arm_round": "बाजू राउंड (12)",
-      "sleeve_end_round": "आस्तीन का अंत राउंड (13)",
-      "armhole": "बाजू का गड्ढा (14)",
+      "bust_round": "9. छाती राउंड",
+      "waist_round": "10. कमर राउंड",
+      "sleeve_length": "11. आस्तीन की लंबाई",
+      "arm_round": "12. बाजू राउंड",
+      "sleeve_end_round": "13. आस्तीन का अंत राउंड",
+      "armhole": "14. बाजू का गड्ढा",
       "additional_notes": "अतिरिक्त नोट्स"
     },
 
@@ -788,6 +806,13 @@
     "read_in": "इसमें पढ़ें",
     "english_only": "केवल अंग्रेजी में",
     "translation_not_available": "यह लेख अभी आपकी भाषा में उपलब्ध नहीं है। अंग्रेजी संस्करण दिखा रहा है।"
+  },
+
+  "session": {
+    "expired_title": "सत्र समाप्त",
+    "expired_message": "निष्क्रियता के कारण आपका सत्र समाप्त हो गया है। कृपया जारी रखने के लिए पुनः लॉगिन करें।",
+    "login_again": "पुनः लॉगिन करें",
+    "timeout_warning": "आपका सत्र जल्द समाप्त होने वाला है। लॉग इन रहने के लिए कहीं भी क्लिक करें।"
   },
 
   "login": {

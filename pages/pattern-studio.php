@@ -42,6 +42,25 @@ $messageType = '';
 $editMeasurement = null;
 
 // ============================================================================
+// FETCH BLOUSE PATTERNS FROM DATABASE
+// ============================================================================
+$blousePatterns = [];
+try {
+    global $pdo;
+    $stmt = $pdo->prepare("
+        SELECT id, title, description, image, price
+        FROM pattern_making_portfolio
+        WHERE status = 'active'
+        ORDER BY display_order ASC, created_at DESC
+    ");
+    $stmt->execute();
+    $blousePatterns = $stmt->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+    // Silently fail if table doesn't exist
+    error_log("Error fetching blouse patterns: " . $e->getMessage());
+}
+
+// ============================================================================
 // SUCCESS MESSAGE HANDLING
 // ============================================================================
 if (isset($_GET['success']) && $_GET['success'] == 1) {
@@ -189,6 +208,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $isLoggedIn) {
                     $inseam, $thighCircumference, !empty($notes) ? $notes : null,
                     $editId, $userId
                 ]);
+
+                // Also update the customers table if this measurement has a customer_id
+                // This ensures phone number changes are reflected in the dashboard
+                $customerUpdateStmt = $pdo->prepare("
+                    UPDATE customers c
+                    INNER JOIN measurements m ON m.customer_id = c.id
+                    SET c.customer_reference = ?, c.customer_name = ?
+                    WHERE m.id = ? AND m.user_id = ? AND m.customer_id IS NOT NULL
+                ");
+                $customerUpdateStmt->execute([$customerReference, $customerName, $editId, $userId]);
             } else {
                 // INSERT new measurement
                 $stmt = $pdo->prepare("
@@ -490,6 +519,98 @@ $additionalStyles = <<<'CSS'
         }
 
         /* --------------------------------------------------------------------
+           2.5. BLOUSE PATTERN SELECTION GRID - Clickable pattern items
+           -------------------------------------------------------------------- */
+        #blouse-subtypes {
+            flex-wrap: wrap;
+            align-items: flex-start;
+        }
+
+        .blouse-pattern-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            align-items: stretch;
+            flex: 1;
+        }
+
+        .blouse-pattern-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.25rem;
+            padding: 0.75rem 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: #fff;
+            min-width: 140px;
+        }
+
+        .blouse-pattern-item:hover {
+            border-color: #dc2626;
+            background: #fef2f2;
+        }
+
+        .blouse-pattern-item.selected {
+            border-color: #dc2626;
+            background: #fef2f2;
+        }
+
+        .blouse-pattern-item.selected .pattern-name {
+            color: #1a202c;
+            font-weight: 600;
+        }
+
+        .blouse-pattern-item .pattern-name {
+            font-size: 0.9rem;
+            color: #1a202c;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .blouse-pattern-item .pattern-price {
+            font-size: 0.75rem;
+            color: #718096;
+        }
+
+        .blouse-pattern-item .pattern-price.free {
+            color: #dc2626;
+            font-weight: 700;
+        }
+
+        .no-patterns {
+            color: #718096;
+            font-style: italic;
+        }
+
+        /* Measurements Form Header */
+        .measurements-form-header {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .measurements-form-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #2D3748;
+            margin: 0 0 0.25rem 0;
+        }
+
+        .measurements-form-title #pattern-name-text {
+            color: #dc2626;
+            font-weight: 700;
+        }
+
+        .measurements-form-subtitle {
+            font-size: 0.8rem;
+            color: #718096;
+            font-style: italic;
+            margin: 0;
+        }
+
+        /* --------------------------------------------------------------------
            3. CUSTOMER DETAILS - Expandable section for boutique users
            -------------------------------------------------------------------- */
         .customer-details-row {
@@ -529,12 +650,12 @@ $additionalStyles = <<<'CSS'
 
         /* --------------------------------------------------------------------
            5. THREE COLUMN GRID - Main form layout
-           Column 1: Fields 1-8 | Column 2: Fields 9-14 + Notes | Column 3: Diagram
+           Column 1: Diagram | Column 2: Fields 1-8 | Column 3: Fields 9-14 + Notes
            -------------------------------------------------------------------- */
         .pattern-studio-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr 400px;
-            gap: 3rem;
+            grid-template-columns: 320px minmax(200px, 280px) minmax(200px, 280px);
+            gap: 75px;
             margin-top: 1.5rem;
         }
 
@@ -571,6 +692,27 @@ $additionalStyles = <<<'CSS'
         .form-field select:focus {
             outline: none;
             border-color: #805AD5;
+        }
+
+        /* Input wrapper for hover hint */
+        .input-wrapper {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+        }
+        .input-wrapper .unit-hint {
+            position: absolute;
+            right: -65px;
+            font-size: 0.75rem;
+            color: #718096;
+            font-style: italic;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+            white-space: nowrap;
+        }
+        .input-wrapper:hover .unit-hint,
+        .input-wrapper input:focus + .unit-hint {
+            opacity: 1;
         }
 
         /* Validation error messages */
@@ -699,6 +841,19 @@ $additionalStyles = <<<'CSS'
                 gap: 0.5rem;
                 padding-left: 0.75rem;
             }
+            .blouse-pattern-grid {
+                justify-content: flex-start;
+            }
+            .blouse-pattern-item {
+                min-width: 120px;
+                padding: 0.6rem 0.8rem;
+            }
+            .measurements-form-title {
+                font-size: 1rem;
+            }
+            .measurements-form-subtitle {
+                font-size: 0.75rem;
+            }
         }
 
         /* Mobile: Single column, stacked form fields */
@@ -783,6 +938,30 @@ $additionalStyles = <<<'CSS'
             .blouse-info-item {
                 font-size: 0.85rem;
             }
+            /* Blouse pattern grid mobile */
+            .blouse-pattern-grid {
+                gap: 0.5rem;
+            }
+            .blouse-pattern-item {
+                min-width: 100px;
+                padding: 0.5rem 0.6rem;
+            }
+            .blouse-pattern-item .pattern-name {
+                font-size: 0.8rem;
+            }
+            .blouse-pattern-item .pattern-price {
+                font-size: 0.7rem;
+            }
+            /* Measurements form header mobile */
+            .measurements-form-header {
+                margin-bottom: 0.75rem;
+            }
+            .measurements-form-title {
+                font-size: 0.95rem;
+            }
+            .measurements-form-subtitle {
+                font-size: 0.7rem;
+            }
             /* Alert messages */
             .alert {
                 padding: 0.75rem 1rem;
@@ -835,6 +1014,11 @@ $additionalStyles = <<<'CSS'
             }
             .blouse-info-item {
                 font-size: 0.8rem;
+            }
+            /* Blouse pattern grid extra small */
+            .blouse-pattern-item {
+                min-width: calc(50% - 0.25rem);
+                flex: 1 1 calc(50% - 0.25rem);
             }
         }
 
@@ -1015,50 +1199,45 @@ include __DIR__ . '/../includes/header.php';
                     </div>
 
                     <!-- --------------------------------------------------------
-                         SECTION: Blouse Sub-Types Info (shown when Blouses selected)
+                         SECTION: Blouse Pattern Selection (clickable items from DB)
                          -------------------------------------------------------- -->
-                    <div id="blouse-subtypes" class="form-row" style="display: block;">
-                        <label class="form-label form-label-fixed"></label>
-                        <div class="blouse-subtype-section">
-                            <!-- Row 1: Specific Blouse Types -->
-                            <div class="blouse-subtype-row">
-                                <div class="blouse-info-item">
-                                    <i data-lucide="circle" style="width: 6px; height: 6px; fill: currentColor;"></i>
-                                    <span><?php _e('pattern_studio.blouse_types.saree_blouse'); ?></span>
-                                </div>
-                                <div class="blouse-info-item">
-                                    <i data-lucide="circle" style="width: 6px; height: 6px; fill: currentColor;"></i>
-                                    <span><?php _e('pattern_studio.blouse_types.princess_blouse'); ?></span>
-                                </div>
-                                <div class="blouse-info-item">
-                                    <i data-lucide="circle" style="width: 6px; height: 6px; fill: currentColor;"></i>
-                                    <span><?php _e('pattern_studio.blouse_types.choli_blouse'); ?></span>
-                                </div>
-                                <div class="blouse-info-item">
-                                    <i data-lucide="circle" style="width: 6px; height: 6px; fill: currentColor;"></i>
-                                    <span><?php _e('pattern_studio.blouse_types.single_katori'); ?></span>
-                                </div>
-                                <div class="blouse-info-item">
-                                    <i data-lucide="circle" style="width: 6px; height: 6px; fill: currentColor;"></i>
-                                    <span><?php _e('pattern_studio.blouse_types.double_katori'); ?></span>
-                                </div>
-                            </div>
-
-                            <!-- Row 2: Designer Options -->
-                            <div class="blouse-subtype-row">
-                                <div class="blouse-info-item">
-                                    <i data-lucide="circle" style="width: 6px; height: 6px; fill: currentColor;"></i>
-                                    <span><?php _e('pattern_studio.blouse_types.designer_front_back'); ?></span>
-                                </div>
-                                <div class="blouse-info-item">
-                                    <i data-lucide="circle" style="width: 6px; height: 6px; fill: currentColor;"></i>
-                                    <span><?php _e('pattern_studio.blouse_types.designer_sleeves'); ?></span>
-                                </div>
-                            </div>
+                    <div id="blouse-subtypes" class="form-row">
+                        <div class="form-label-fixed"></div>
+                        <div class="blouse-pattern-grid">
+                            <?php if (!empty($blousePatterns)): ?>
+                                <?php foreach ($blousePatterns as $index => $pattern): ?>
+                                    <div class="blouse-pattern-item <?php echo $index === 0 ? 'selected' : ''; ?>"
+                                         data-pattern-id="<?php echo $pattern['id']; ?>"
+                                         data-pattern-title="<?php echo htmlspecialchars($pattern['title']); ?>"
+                                         onclick="selectBlousePattern(this)">
+                                        <span class="pattern-name"><?php echo htmlspecialchars($pattern['title']); ?></span>
+                                        <?php if ($pattern['price'] == 0): ?>
+                                            <span class="pattern-price free">FREE</span>
+                                        <?php else: ?>
+                                            <span class="pattern-price">&#8377;<?php echo number_format($pattern['price']); ?></span>
+                                        <?php endif; ?>
+                                    </div>
+                                <?php endforeach; ?>
+                            <?php else: ?>
+                                <p class="no-patterns">No blouse patterns available.</p>
+                            <?php endif; ?>
                         </div>
+                        <!-- Hidden input to store selected pattern ID -->
+                        <input type="hidden" id="selected_pattern_id" name="selected_pattern_id"
+                               value="<?php echo !empty($blousePatterns) ? $blousePatterns[0]['id'] : ''; ?>">
                     </div>
 
                     <hr class="section-separator">
+
+                    <!-- ============================================================
+                         MEASUREMENTS FORM TITLE (includes selected pattern name)
+                         ============================================================ -->
+                    <div class="measurements-form-header">
+                        <p id="selected-pattern-heading" class="measurements-form-title">
+                            <?php _e('pattern_studio.enter_measurements_for'); ?> '<span id="pattern-name-text"><?php echo !empty($blousePatterns) ? htmlspecialchars($blousePatterns[0]['title']) : 'Blouse'; ?></span>' <?php _e('pattern_studio.in_inches'); ?>
+                        </p>
+                        <p class="measurements-form-subtitle"><?php _e('pattern_studio.see_image_reference'); ?></p>
+                    </div>
 
                     <!-- ============================================================
                          THREE COLUMN LAYOUT: Measurement Fields
@@ -1066,25 +1245,42 @@ include __DIR__ . '/../includes/header.php';
                     <div class="pattern-studio-grid">
 
                         <!-- ------------------------------------------------
-                             COLUMN 1: Fields 1-8 (Body Measurements)
+                             COLUMN 1: Measurement Guide Diagram
+                             ------------------------------------------------ -->
+                        <div class="diagram-column">
+                            <h3><?php _e('pattern_studio.measurement_guide'); ?></h3>
+                            <img id="measurement-diagram" src="../images/women_diagram.PNG" alt="<?php echo __('pattern_studio.measurement_guide'); ?>">
+                        </div>
+
+                        <!-- ------------------------------------------------
+                             COLUMN 2: Fields 1-8 (Body Measurements)
                              ------------------------------------------------ -->
                         <div class="form-column" id="blouse-col1">
                             <div class="form-field">
                                 <label for="blength"><?php _e('pattern_studio.fields.blouse_back_length'); ?></label>
-                                <input type="number" step="0.5" min="10" max="18" id="blength" name="blength"
-                                    value="<?php echo $editMeasurement['blength'] ?? ''; ?>">
+                                <div class="input-wrapper">
+                                    <input type="number" step="0.5" min="10" max="18" id="blength" name="blength"
+                                        value="<?php echo $editMeasurement['blength'] ?? ''; ?>">
+                                    <span class="unit-hint"><?php _e('pattern_studio.in_inches'); ?></span>
+                                </div>
                                 <span class="error-message" id="blength-error"></span>
                             </div>
                             <div class="form-field">
                                 <label for="fshoulder"><?php _e('pattern_studio.fields.full_shoulder'); ?></label>
-                                <input type="number" step="0.5" min="10" max="17" id="fshoulder" name="fshoulder"
-                                    value="<?php echo $editMeasurement['fshoulder'] ?? ''; ?>">
+                                <div class="input-wrapper">
+                                    <input type="number" step="0.5" min="10" max="17" id="fshoulder" name="fshoulder"
+                                        value="<?php echo $editMeasurement['fshoulder'] ?? ''; ?>">
+                                    <span class="unit-hint"><?php _e('pattern_studio.in_inches'); ?></span>
+                                </div>
                                 <span class="error-message" id="fshoulder-error"></span>
                             </div>
                             <div class="form-field">
                                 <label for="shoulder"><?php _e('pattern_studio.fields.shoulder_strap'); ?></label>
-                                <input type="number" step="0.25" min="1" max="5" id="shoulder" name="shoulder"
-                                    value="<?php echo $editMeasurement['shoulder'] ?? ''; ?>">
+                                <div class="input-wrapper">
+                                    <input type="number" step="0.25" min="1" max="5" id="shoulder" name="shoulder"
+                                        value="<?php echo $editMeasurement['shoulder'] ?? ''; ?>">
+                                    <span class="unit-hint"><?php _e('pattern_studio.in_inches'); ?></span>
+                                </div>
                                 <span class="error-message" id="shoulder-error"></span>
                             </div>
                             <div class="form-field">
@@ -1120,7 +1316,7 @@ include __DIR__ . '/../includes/header.php';
                         </div>
 
                         <!-- ------------------------------------------------
-                             COLUMN 2: Fields 9-14 + Notes + Submit
+                             COLUMN 3: Fields 9-14 + Notes + Submit
                              ------------------------------------------------ -->
                         <div class="form-column" id="blouse-col2">
                             <div class="form-field">
@@ -1170,14 +1366,6 @@ include __DIR__ . '/../includes/header.php';
                             </div>
                         </div>
 
-                        <!-- ------------------------------------------------
-                             COLUMN 3: Measurement Guide Diagram
-                             ------------------------------------------------ -->
-                        <div class="diagram-column">
-                            <h3><?php _e('pattern_studio.measurement_guide'); ?></h3>
-                            <img id="measurement-diagram" src="../images/women_diagram.PNG" alt="<?php echo __('pattern_studio.measurement_guide'); ?>">
-                        </div>
-
                     </div><!-- /.pattern-studio-grid -->
 
                 </form><!-- /#measurements-form -->
@@ -1213,6 +1401,29 @@ include __DIR__ . '/../includes/header.php';
                 lucide.createIcons();
             }
         });
+
+        // ====================================================================
+        // BLOUSE PATTERN SELECTION
+        // ====================================================================
+        function selectBlousePattern(element) {
+            // Remove selected class from all pattern items
+            const allItems = document.querySelectorAll('.blouse-pattern-item');
+            allItems.forEach(item => item.classList.remove('selected'));
+
+            // Add selected class to clicked item
+            element.classList.add('selected');
+
+            // Update hidden input with selected pattern ID
+            const patternId = element.getAttribute('data-pattern-id');
+            const patternTitle = element.getAttribute('data-pattern-title');
+            document.getElementById('selected_pattern_id').value = patternId;
+
+            // Update the pattern name in the heading
+            const patternNameText = document.getElementById('pattern-name-text');
+            if (patternNameText) {
+                patternNameText.textContent = patternTitle;
+            }
+        }
 
         // ====================================================================
         // FORM FUNCTIONALITY
@@ -1299,19 +1510,22 @@ include __DIR__ . '/../includes/header.php';
             });
 
             // ----------------------------------------------------------------
-            // PATTERN TYPE TOGGLE (Show/Hide Blouse Subtypes)
+            // PATTERN TYPE TOGGLE (Show/Hide Blouse Subtypes & Heading)
             // ----------------------------------------------------------------
             const patternBlouse = document.getElementById('pattern-blouse');
             const patternKurti = document.getElementById('pattern-kurti');
             const patternPants = document.getElementById('pattern-pants');
             const patternSkirt = document.getElementById('pattern-skirt');
             const blouseSubtypes = document.getElementById('blouse-subtypes');
+            const patternHeading = document.getElementById('selected-pattern-heading');
 
             function toggleBlouseSubtypes() {
                 if (patternBlouse && patternBlouse.checked) {
                     blouseSubtypes.style.display = 'flex';
+                    if (patternHeading) patternHeading.style.display = 'block';
                 } else {
                     blouseSubtypes.style.display = 'none';
+                    if (patternHeading) patternHeading.style.display = 'none';
                 }
             }
 

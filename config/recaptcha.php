@@ -22,7 +22,8 @@ define('RECAPTCHA_SECRET_KEY', '6LdCK1csAAAAAEVO2A7kkUU6oAPBbC0HuL5KTSw1');
 define('RECAPTCHA_THRESHOLD', 0.5);
 
 // Enable/disable reCAPTCHA (useful for local development)
-define('RECAPTCHA_ENABLED', true);
+// TODO: Get new reCAPTCHA v3 keys for cuttingmaster.in from https://www.google.com/recaptcha/admin
+define('RECAPTCHA_ENABLED', false);
 
 /**
  * Verify reCAPTCHA v3 token

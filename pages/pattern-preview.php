@@ -488,6 +488,7 @@ include __DIR__ . '/../includes/header.php';
                 $svgUrl = 'pattern-payment.php' . $baseParams . '&format=svg';
                 $projectorPdfUrl = 'pattern-payment.php' . $baseParams . '&format=projector';
                 $projectorPngUrl = 'pattern-payment.php' . $baseParams . '&format=projector_png';
+                $measurementGuideUrl = 'pattern-payment.php' . $baseParams . '&format=measurement_guide';
                 $pdfButtonText = __('pattern_preview.buttons.buy_pdf');
                 $svgButtonText = __('pattern_preview.buttons.buy_svg');
                 $projectorPdfButtonText = __('pattern_preview.buttons.buy_projector_pdf');
@@ -499,6 +500,7 @@ include __DIR__ . '/../includes/header.php';
                 $svgUrl = 'pattern-download.php' . $baseParams . '&format=svg';
                 $projectorPdfUrl = 'pattern-download.php' . $baseParams . '&format=projector';
                 $projectorPngUrl = 'pattern-download.php' . $baseParams . '&format=projector_png';
+                $measurementGuideUrl = 'pattern-download.php' . $baseParams . '&format=measurement_guide';
                 $pdfButtonText = __('pattern_preview.buttons.download_pdf');
                 $svgButtonText = __('pattern_preview.buttons.download_svg');
                 $projectorPdfButtonText = __('pattern_preview.buttons.download_projector_pdf');
@@ -536,6 +538,12 @@ include __DIR__ . '/../includes/header.php';
                 <button type="button" class="btn-buy-pattern" style="background: linear-gradient(135deg, #0891B2, #0E7490);" onclick="showDisclaimerModal('projector_png')">
                     <i data-lucide="image" style="width: 18px; height: 18px;"></i>
                     Projector PNG
+                </button>
+
+                <!-- Measurement Guide -->
+                <button type="button" class="btn-buy-pattern" style="background: linear-gradient(135deg, #D97706, #B45309);" onclick="showDisclaimerModal('measurement_guide')">
+                    <i data-lucide="ruler" style="width: 18px; height: 18px;"></i>
+                    <?php _e('pattern_preview.buttons.measurement_guide'); ?>
                 </button>
             </div>
         </div>
@@ -581,7 +589,8 @@ include __DIR__ . '/../includes/header.php';
         pdf: '<?php echo $pdfUrl; ?>',
         svg: '<?php echo $svgUrl; ?>',
         projector_pdf: '<?php echo $projectorPdfUrl; ?>',
-        projector_png: '<?php echo $projectorPngUrl; ?>'
+        projector_png: '<?php echo $projectorPngUrl; ?>',
+        measurement_guide: '<?php echo $measurementGuideUrl; ?>'
     };
 
     let selectedFormat = '';

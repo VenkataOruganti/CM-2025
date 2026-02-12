@@ -100,15 +100,42 @@ function loginUser($email, $password) {
     }
 }
 
+// Session timeout in seconds (30 minutes)
+define('SESSION_TIMEOUT', 1800);
+
 function isLoggedIn() {
     return isset($_SESSION['user_id']);
 }
 
+function isSessionExpired() {
+    if (!isset($_SESSION['last_activity'])) {
+        return false; // No activity tracked yet, treat as valid
+    }
+
+    $inactive_time = time() - $_SESSION['last_activity'];
+    return $inactive_time > SESSION_TIMEOUT;
+}
+
 function requireLogin() {
+    // Check if not logged in
     if (!isLoggedIn()) {
         header('Location: login.php');
         exit;
     }
+
+    // Check for session timeout
+    if (isSessionExpired()) {
+        // Destroy the expired session
+        session_unset();
+        session_destroy();
+
+        // Redirect to login with session expired message
+        header('Location: login.php?session_expired=1');
+        exit;
+    }
+
+    // Update last activity timestamp
+    $_SESSION['last_activity'] = time();
 }
 
 function getCurrentUser() {

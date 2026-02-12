@@ -1,7 +1,7 @@
 <?php
 /**
  * =============================================================================
- * PATTERN READING GUIDE — 3-Page PDF (Letter Size) with Dimension Annotations
+ * PATTERN READING GUIDE — 3-Page PDF (A4 Size) with Dimension Annotations
  * =============================================================================
  *
  * Page 1: Front + Patti
@@ -12,8 +12,12 @@
  * dimension arrows on the actual node positions.
  *
  * Usage:
- *   CLI:     php measurementGuide.php                       (customer_id=11 default)
- *   Browser: measurementGuide.php?customer_id=X
+ *   Browser: measurementGuide.php?id=X              (measurement_id)
+ *            measurementGuide.php?customer_id=X     (legacy: customer_id)
+ *   CLI:     php measurementGuide.php               (customer_id=11 default)
+ *
+ * Integrates with pattern-download.php flow for paid/free patterns.
+ * Always generates A4 size PDF.
  *
  * @author CM-2025
  * @date February 2026
@@ -27,9 +31,33 @@ error_reporting(E_ALL & ~E_DEPRECATED);
 $isCLI = (php_sapi_name() === 'cli');
 if ($isCLI) {
     $_GET['customer_id'] = $_GET['customer_id'] ?? 11;
-    $_GET['mode'] = 'print';
     $_SERVER['REQUEST_METHOD'] = 'GET';
 }
+
+// Always use print mode for measurement guide (hides node labels and dev annotations)
+$_GET['mode'] = 'print';
+
+// Get pattern type for filename (e.g., "Saree Blouse - 3 Dart")
+$patternType = isset($_GET['type']) ? $_GET['type'] : 'SariBlouse';
+
+// Handle measurement_id parameter (new flow) or customer_id (legacy)
+if (isset($_GET['id']) && !isset($_GET['customer_id'])) {
+    // New flow: look up customer_id from measurement_id
+    require_once __DIR__ . '/../config/database.php';
+    $measurementId = intval($_GET['id']);
+    $stmt = $pdo->prepare("SELECT customer_id, user_id FROM measurements WHERE id = ?");
+    $stmt->execute([$measurementId]);
+    $measurement = $stmt->fetch(PDO::FETCH_ASSOC);
+    if ($measurement) {
+        if ($measurement['customer_id']) {
+            $_GET['customer_id'] = $measurement['customer_id'];
+        } else {
+            // Self measurement - use user_id to get self measurement
+            $_GET['measurement_id'] = $measurementId;
+        }
+    }
+}
+
 if (!defined('COMPOSITE_MODE')) {
     define('COMPOSITE_MODE', true);
 }
@@ -465,9 +493,9 @@ list($sleeveClean, $sleeveVbW, $sleeveVbH) = prepareSvgForPdf(
 );
 
 // =============================================================================
-// PDF GENERATION — 3 Pages, Letter Size
+// PDF GENERATION — 3 Pages, A4 Size
 // =============================================================================
-$pdf = new TCPDF('P', 'in', 'LETTER', true, 'UTF-8', false);
+$pdf = new TCPDF('P', 'in', 'A4', true, 'UTF-8', false);
 $pdf->SetCreator('CM-2025 Pattern Reading Guide');
 $pdf->SetAuthor($customerName);
 $pdf->SetTitle('Pattern Reading Guide - ' . $customerName);
@@ -476,8 +504,8 @@ $pdf->setPrintFooter(false);
 $pdf->SetMargins(0.3, 0.3, 0.3);
 $pdf->SetAutoPageBreak(false, 0.3);
 
-$pw = 8.5 - 0.6;   // 7.9" printable width
-$ph = 11.0 - 0.6;  // 10.4" printable height
+$pw = 8.27 - 0.6;   // 7.67" printable width (A4)
+$ph = 11.69 - 0.6;  // 11.09" printable height (A4)
 
 // --- Preprocess logo SVG for TCPDF (inline CSS classes) ---
 $logoSvg = file_get_contents(__DIR__ . '/../images/cm-logo.svg');
@@ -550,12 +578,12 @@ function renderPage($pdf, $svgContent, $vbW, $vbH, $pw, $ph, $pageNum, $totalPag
     // Footer line (edge to edge, 80% black)
     $pdf->SetDrawColor(51, 51, 51);  // 80% black
     $pdf->SetLineWidth(0.01);
-    $pdf->Line(0, 10.40, 8.5, 10.40);  // Full page width (Letter = 8.5")
+    $pdf->Line(0, 11.39, 8.27, 11.39);  // Full page width (A4 = 8.27")
 
     // File info on the left
     $pdf->SetFont('helvetica', '', 7);
     $pdf->SetTextColor(150, 150, 150);
-    $pdf->SetXY(0.3, 10.45);
+    $pdf->SetXY(0.3, 11.44);
     $pdf->Cell(4, 0.2,
         'CM-2025 Pattern Reading Guide  |  ' . htmlspecialchars($customerName) . '  |  Page ' . $pageNum . ' of ' . $totalPages,
         0, 0, 'L');
@@ -563,8 +591,8 @@ function renderPage($pdf, $svgContent, $vbW, $vbH, $pw, $ph, $pageNum, $totalPag
     // Website address on the right
     $pdf->SetFont('helvetica', 'I', 8);
     $pdf->SetTextColor(100, 100, 100);
-    $pdf->SetXY(4.5, 10.45);
-    $pdf->Cell(3.7, 0.2, 'www.cuttingmaster.in', 0, 0, 'R');
+    $pdf->SetXY(4.3, 11.44);
+    $pdf->Cell(3.67, 0.2, 'www.cuttingmaster.in', 0, 0, 'R');
 }
 
 $allMeasurements = 'Bust: ' . number_format($bust, 1) . '";  Chest: ' . number_format($chest, 1) . '";  Waist: ' . number_format($waist, 1) . '";  Apex: ' . number_format($apex, 1) . '"' . "\n"
@@ -582,7 +610,9 @@ renderPage($pdf, $sleeveClean, $sleeveVbW, $sleeveVbH, $pw, $ph, 3, 3, $customer
 // =============================================================================
 // OUTPUT
 // =============================================================================
-$filename = 'PatternReadingGuide_' . preg_replace('/[^a-zA-Z0-9]/', '_', $customerName) . '.pdf';
+$patternNameClean = preg_replace('/[^a-zA-Z0-9]/', '', $patternType);
+$customerNameClean = preg_replace('/[^a-zA-Z0-9]/', '_', $customerName);
+$filename = $patternNameClean . '_Guide_' . $customerNameClean . '.pdf';
 if ($isCLI) {
     $outputPath = getenv('HOME') . '/Desktop/' . $filename;
     $pdf->Output($outputPath, 'F');

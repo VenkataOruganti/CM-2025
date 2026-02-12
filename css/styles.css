@@ -216,6 +216,33 @@
             text-overflow: ellipsis;
         }
 
+        .nav-dropdown-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.6rem 0.75rem;
+            color: #4A5568;
+            text-decoration: none;
+            font-size: 0.85rem;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+
+        .nav-dropdown-link:hover {
+            background: rgba(139, 123, 168, 0.1);
+            color: #8B5A6B;
+        }
+
+        .nav-dropdown-link i {
+            color: #8B7BA8;
+        }
+
+        .nav-dropdown-divider {
+            height: 1px;
+            background: rgba(177, 156, 217, 0.2);
+            margin: 0.5rem 0;
+        }
+
         .btn-primary {
             background: #8B7BA8;
             color: #FFFFFF;
